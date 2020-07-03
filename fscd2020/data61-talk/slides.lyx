@@ -111,21 +111,7 @@
 status open
 
 \begin_layout Plain Layout
-This file is a solution template for:
-\end_layout
-
-\begin_layout Itemize
-Talk at a conference/colloquium.
- 
-\end_layout
-
-\begin_layout Itemize
-Talk length is about 20min.
- 
-\end_layout
-
-\begin_layout Itemize
-Style is ornate.
+Dire: our work on reduction monads
 \end_layout
 
 \end_inset
@@ -135,23 +121,16 @@ Style is ornate.
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
- 
+This is a training session for my prerecorded talk that I will upload on
+ the website of the FSCD conference which will be broadcast next Friday
+ at 1:30
 \end_layout
 
 \begin_layout Plain Layout
-In principle, this file can be redistributed and/or modified under the terms
- of the GNU Public License, version 2.
- However, this file is supposed to be a template to be modified for your
- own needs.
- For this reason, if you use this file as a template and not specifically
- distribute it as part of a another package/program, the author grants the
- extra permission to freely copy and modify this file as you see fit and
- even to delete this copyright notice.
- 
+I am going to present a joint work with my..
 \end_layout
 
 \end_inset
@@ -361,7 +340,7 @@ University of New South Wales, Australia
 \end_layout
 
 \begin_layout Date
-FSCD 2020
+FSCD 2020 (precorded talk given next Friday 1:30 am)
 \begin_inset Note Note
 status collapsed
 
@@ -386,7 +365,7 @@ July
 \begin_inset Formula $2^{nd}$
 \end_inset
 
-
+ (precorded)
 \begin_inset Note Note
 status collapsed
 
@@ -545,7 +524,132 @@ beamerdefaultoverlayspecification{<+->}
 status open
 
 \begin_layout Plain Layout
-Summary
+Prologue
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Question answered by this FSCD paper
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+What is a programming language (
+\color blue
+syntax
+\color inherit
+ and 
+\color blue
+semantics
+\color inherit
+), mathematically?
+\end_layout
+
+\begin_layout Standard
+(This was the topic of my PhD, defended last October).
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Based on
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+
+\emph on
+Initial
+\begin_inset space ~
+\end_inset
+
+Semantics 
+\emph default
+specification of inductive structures (e.g.
+ the syntax of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus) in category theory.
+\end_layout
+
+\begin_layout Description
+
+\emph on
+Modules
+\begin_inset space ~
+\end_inset
+
+over
+\begin_inset space ~
+\end_inset
+
+monads 
+\emph default
+approach advocated by Andre Hirschowitz and Marco Maggesi since 2007.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+This FSCD paper builds upon our previous work 
+\begin_inset Quotes eld
+\end_inset
+
+Reduction Monads and Their Signatures 
+\begin_inset Quotes erd
+\end_inset
+
+ POPL '20 (with Benedikt Ahrens, André Hirschowitz, Marco Maggesi).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+I mainly worked with Andre Hirschowitz, Marco Maggesi and Benedikt Ahrens
+ (they are all very nice).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary of this FSCD talk
 \end_layout
 
 \end_inset
@@ -588,7 +692,7 @@ them;
 
 \begin_layout Itemize
 generalises the reduction monads of Ahrens et al.
- (POPL 20)
+ (POPL '20)
 \end_layout
 
 \begin_deeper
@@ -724,11 +828,18 @@ simply-typed syntax (and semantics)
 
 \end_deeper
 \end_deeper
-\begin_layout Frame
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -914,6 +1025,11 @@ only congruent transitions
 
 \end_deeper
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -1470,8 +1586,7 @@ reduction monads
 \begin_inset Text
 
 \begin_layout Plain Layout
-(Ahrens et al.
- '20)
+(Ahrens et al.'20)
 \end_layout
 
 \end_inset
@@ -1727,362 +1842,6 @@ Untyped case: base category =
 \begin_layout Itemize
 Simply-typed case: base category = 
 \begin_inset Formula $Set^{Types}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Quick definition of 
-\begin_inset Formula $T$
-\end_inset
-
--modules
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_deeper
-\begin_layout FrameSubtitle
-(given a monad 
-\begin_inset Formula $T$
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Block
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-Components of a 
-\begin_inset Formula $T$
-\end_inset
-
--module 
-\begin_inset Formula $M$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-a functor 
-\begin_inset Formula $M$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-a natural transformation 
-\begin_inset Formula $MT\xrightarrow{m}M$
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[$
-\backslash
-Rightarrow$]
-\end_layout
-
-\end_inset
-
-
-\series bold
-substitution
-\series default
- (see below)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-(+ some substitution laws)
-\end_layout
-
-\end_deeper
-\begin_layout ExampleBlock
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-Substitution for modules
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Formula $m\in M(X)$
-\end_inset
-
- = 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $m$
-\end_inset
-
- takes free variables in 
-\begin_inset Formula $X$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $m[x\mapsto t_{x}]$
-\end_inset
-
- = 
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="1">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-simultaneous substitution in 
-\begin_inset Formula $m$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-of every 
-\begin_inset Formula $x\in X$
-\end_inset
-
- with 
-\begin_inset Formula $t_{x}\in T(Y)$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-1em}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-[
-\end_layout
-
-\begin_layout Plain Layout
-
-X
-\backslash
-xrightarrow{t_{-}}T(Y)
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-qquad
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tikzcd}[ampersand replacement=
-\backslash
-&, row sep = 0ex,
-\end_layout
-
-\begin_layout Plain Layout
-
-  /tikz/column 1/.append style={anchor=base east},
-\end_layout
-
-\begin_layout Plain Layout
-
-  /tikz/column 3/.append style={anchor=base west}]
-\end_layout
-
-\begin_layout Plain Layout
-
-M(X)
-\backslash
-ar[r, "{Mt_{-}}"] 
-\backslash
-& M(T(Y))
-\backslash
-ar[r, "m_{Y}"] 
-\backslash
-& M(Y) 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-m
-\backslash
-ar[rr, mapsto] 
-\backslash
-&  
-\backslash
-& m[x
-\backslash
-mapsto t_x]
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tikzcd}
-\backslash
-]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\[
-X\xrightarrow{t_{-}}T(Y)\qquad\xymatrix{M(X)\ar[r]^{Mt_{-}} & M(T(Y))\ar[r]^{m_{Y}} & M(Y)\\
-m\ar[rr] &  & m[x\mapsto t_{x}]
-}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $\begin{array}{ccccc}
-M(X) & \xrightarrow{Mt_{-}} & M(T(Y)) & \xrightarrow{m_{Y}} & M(Y)\\
-m
-\end{array}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Description
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Reference sdsad
-\end_layout
-
 \end_inset
 
 
@@ -3300,12 +3059,13 @@ signature for
 \end_layout
 
 \end_deeper
-\begin_layout ExampleBlock
+\begin_layout Standard
+4 first examples already presented in Ahrens et al.
+ '20 (cbn 
+\begin_inset Formula $\lambda$
+\end_inset
 
-\end_layout
-
-\begin_layout ExampleBlock
-
+-calculus is a reduction monad)
 \end_layout
 
 \end_deeper
@@ -3708,12 +3468,12 @@ newexemple
 \end_layout
 
 \begin_layout Frame
-cbn 
+(untyped) cbn 
 \begin_inset Formula $\lambda$
 \end_inset
 
 -calculus: 
-\begin_inset Formula $(Values,T\xleftarrow{source}Trans\xrightarrow{target}T$
+\begin_inset Formula $(T,T\xleftarrow{source}Trans\xrightarrow{target}T$
 \end_inset
 
 )
@@ -4541,9 +4301,10 @@ metavariables
 \end_inset
 
 -module of terms depending on an additional variable
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 (in fact, abstraction is an operation 
 \begin_inset Formula $T'\xrightarrow{abs}T$
@@ -4552,10 +4313,15 @@ metavariables
 )
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Frame
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
+<lyxtabular version="3" rows="4" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4630,11 +4396,151 @@ metavariable
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 
+\begin_inset Quotes eld
+\end_inset
+
+premise
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{green}t_{1}}\rightarrow{\color{red}t_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}V\rightarrow & \,T'\times T'\\
+({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}})\mapsto & \,({\color{green}t_{1}},{\color{red}t_{2}})
+\end{aligned}
+\text{\quad}$
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(
+\begin_inset Formula $T$
+\end_inset
+
+-module
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+morphism)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\dots$
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+conclusion
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula ${\normalcolor {\color{green}\lambda x.t_{1}}\rightarrow{\color{red}\lambda x.t_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
 \end_inset
 
  
@@ -4646,7 +4552,10 @@ metavariable
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\dots$
+\begin_inset Formula $\begin{aligned}V\rightarrow & \,T\times T\\
+({\color{blue}t_{1}},{\color{blue}t_{2}})\mapsto & \,(\:{\color{green}\lambda x.t_{1}},{\color{red}\;\lambda x.t_{2}}\:)
+\end{aligned}
+$
 \end_inset
 
 
@@ -4915,7 +4824,7 @@ Tms:\,t,u & ::=\underbrace{{x|\lambda x.t}}|t\,u\\
 \end_layout
 
 \begin_deeper
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="3">
 <features tabularvalignment="middle">
@@ -5317,7 +5226,7 @@ newexemple
 
 \end_inset
 
-: Specifying 
+: Specify 
 \begin_inset Formula $M_{i}$
 \end_inset
 
@@ -5378,7 +5287,10 @@ Semantics
 \end_inset
 
  reduces to a 
-\begin_inset Formula $\underbrace{\text{multiterm }t_{1}+\dots+t_{n}}_{{\color{green}M_{2}}={\color{blue}FormalSum}\,\circ T}$
+\begin_inset Formula $\underbrace{\text{multiterm }t_{1}+\dots+t_{n}}_{\mathclap{\begin{aligned}{\color{green}\text{multiterms}} & ={\color{blue}\text{formal sum}}\,\text{of terms}\\
+{\color{green}M_{2}} & ={\color{blue}FormalSum}\,\circ T
+\end{aligned}
+}}$
 \end_inset
 
 
@@ -7345,7 +7257,7 @@ transition monads
 
 \begin_layout Standard
 \begin_inset Formula $\text{\ensuremath{\begin{aligned}{\color{blue}T} & =\text{'the' initial model of \ensuremath{\Sigma_{1}}}\\
-\text{(in Ahrens et al. '20, }T & =\quad any \quad\quad \,\,\text{model of } \ensuremath{\Sigma_{1}})\\
+\text{(in Ahrens et al. '20, }T & =\quad any\quad\quad\,\,\text{model of }\ensuremath{\Sigma_{1}})\\
 ({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{'the' initial model of \ensuremath{\Sigma_{2}}}
 \end{aligned}
 }}$

@@ -361,7 +361,7 @@ University of New South Wales, Australia
 \end_layout
 
 \begin_layout Date
-FSCD 2020
+FSCD 2020 (prerecorded talk)
 \begin_inset Note Note
 status collapsed
 
@@ -1173,40 +1173,11 @@ Generalising cbv
 
 \begin_layout Frame
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Syntax
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Semantics
-\end_layout
-
-\end_inset
-</cell>
-</row>
 <row>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -1336,30 +1307,14 @@ end{tikzcd}
 \end_inset
 
 
-\begin_inset Note Note
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-\begin_inset Formula $Terms\xleftarrow{source}Transitions\xrightarrow{target}Values$
-\end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $\xymatrix{ & Transitions\ar[ld]_{source}\ar[rd]^{target}\\
-Terms &  & Values
-}
-$
-\end_inset
-
-
+\backslash
+hspace{-2em}
 \end_layout
 
 \end_inset
@@ -1470,8 +1425,7 @@ reduction monads
 \begin_inset Text
 
 \begin_layout Plain Layout
-(Ahrens et al.
- '20)
+(Ahrens et al.'20)
 \end_layout
 
 \end_inset
@@ -1806,7 +1760,7 @@ a functor
 
 \begin_layout Itemize
 a natural transformation 
-\begin_inset Formula $MT\xrightarrow{m}M$
+\begin_inset Formula $MT\xrightarrow{\rho}M$
 \end_inset
 
 
@@ -1998,7 +1952,9 @@ ar[r, "{Mt_{-}}"]
 \backslash
 & M(T(Y))
 \backslash
-ar[r, "m_{Y}"] 
+ar[r, "
+\backslash
+rho_{Y}"] 
 \backslash
 & M(Y) 
 \backslash
@@ -2321,7 +2277,7 @@ Specification
 \begin_inset Text
 
 \begin_layout Plain Layout
-monad (syntax)
+monad
 \end_layout
 
 \end_inset
@@ -3304,8 +3260,13 @@ signature for
 
 \end_layout
 
-\begin_layout ExampleBlock
+\begin_layout Standard
+4 first examples already presented in Ahrens et al.
+ '20 (cbn 
+\begin_inset Formula $\lambda$
+\end_inset
 
+-calculus is a reduction monad)
 \end_layout
 
 \end_deeper
@@ -3708,12 +3669,12 @@ newexemple
 \end_layout
 
 \begin_layout Frame
-cbn 
+(untyped) cbn 
 \begin_inset Formula $\lambda$
 \end_inset
 
 -calculus: 
-\begin_inset Formula $(Values,T\xleftarrow{source}Trans\xrightarrow{target}T$
+\begin_inset Formula $(T,T\xleftarrow{source}Trans\xrightarrow{target}T$
 \end_inset
 
 )
@@ -4541,9 +4502,10 @@ metavariables
 \end_inset
 
 -module of terms depending on an additional variable
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 (in fact, abstraction is an operation 
 \begin_inset Formula $T'\xrightarrow{abs}T$
@@ -4552,10 +4514,15 @@ metavariables
 )
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Frame
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
+<lyxtabular version="3" rows="4" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4630,11 +4597,151 @@ metavariable
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 
+\begin_inset Quotes eld
+\end_inset
+
+premise
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{green}t_{1}}\rightarrow{\color{red}t_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}V\rightarrow & \,T'\times T'\\
+({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}})\mapsto & \,({\color{green}t_{1}},{\color{red}t_{2}})
+\end{aligned}
+\text{\quad}$
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(
+\begin_inset Formula $T$
+\end_inset
+
+-module
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+morphism)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\dots$
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+conclusion
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula ${\normalcolor {\color{green}\lambda x.t_{1}}\rightarrow{\color{red}\lambda x.t_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
 \end_inset
 
  
@@ -4646,7 +4753,10 @@ metavariable
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\dots$
+\begin_inset Formula $\begin{aligned}V\rightarrow & \,T\times T\\
+({\color{blue}t_{1}},{\color{blue}t_{2}})\mapsto & \,(\:{\color{green}\lambda x.t_{1}},{\color{red}\;\lambda x.t_{2}}\:)
+\end{aligned}
+$
 \end_inset
 
 
@@ -4915,7 +5025,7 @@ Tms:\,t,u & ::=\underbrace{{x|\lambda x.t}}|t\,u\\
 \end_layout
 
 \begin_deeper
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="3">
 <features tabularvalignment="middle">
@@ -5279,7 +5389,7 @@ Signature for
 \begin_deeper
 \begin_layout Standard
 \align center
-1 binary operation (accounts for 
+variables + 1 binary operation (accounts for 
 \begin_inset Formula $t\,u$
 \end_inset
 
@@ -5287,7 +5397,7 @@ Signature for
 \begin_inset Formula $Tms$
 \end_inset
 
-), no equation 
+) 
 \end_layout
 
 \end_deeper
@@ -5317,7 +5427,7 @@ newexemple
 
 \end_inset
 
-: Specifying 
+: Specify 
 \begin_inset Formula $M_{i}$
 \end_inset
 
@@ -5378,7 +5488,10 @@ Semantics
 \end_inset
 
  reduces to a 
-\begin_inset Formula $\underbrace{\text{multiterm }t_{1}+\dots+t_{n}}_{{\color{green}M_{2}}={\color{blue}FormalSum}\,\circ T}$
+\begin_inset Formula $\underbrace{\text{multiterm }t_{1}+\dots+t_{n}}_{\mathclap{\begin{aligned}{\color{green}\text{multiterms}} & ={\color{blue}\text{formal sum}}\,\text{of terms}\\
+{\color{green}M_{2}} & ={\color{blue}FormalSum}\,\circ T
+\end{aligned}
+}}$
 \end_inset
 
 
@@ -5476,7 +5589,7 @@ Operations
 \begin_inset Text
 
 \begin_layout Plain Layout
-a constant 0, a binary operation +
+a constant 0, a binary operation +, variables
 \end_layout
 
 \end_inset
@@ -7192,7 +7305,11 @@ component
 \begin_inset Formula $\Sigma_{3}$
 \end_inset
 
-
+ (
+\series bold
+to be generalised
+\series default
+)
 \end_layout
 
 \end_inset
@@ -7256,6 +7373,174 @@ specifies
 
 \end_layout
 
+\end_deeper
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Currently, 
+\begin_inset Formula $\Sigma_{3}$
+\end_inset
+
+ specifies transition rules for 
+\begin_inset Formula $\text{\ensuremath{\begin{aligned}{\color{blue}T} & =\text{'the' initial model of \ensuremath{\Sigma_{1}}}\\
+\text{(in Ahrens et al. '20, }T & =\quad any\quad\quad\,\,\text{model of }\ensuremath{\Sigma_{1}})\\
+({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{'the' initial model of \ensuremath{\Sigma_{2}}}
+\end{aligned}
+}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Future work
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Formula $\Sigma_{3}$
+\end_inset
+
+ specifies transition rules for
+\begin_inset Formula 
+\[
+\ensuremath{\begin{aligned}{\color{blue}T} & =\text{\sout{'the' initial} }\text{\emph{any} model of \ensuremath{\Sigma_{1}} (as in Ahrens et al. '20)}\\
+({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{\sout{'the' initial} }\text{\emph{any} model of \ensuremath{\Sigma_{2}}}
+\end{aligned}
+}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ensuremath{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{aligned}{
+\backslash
+color{blue}T} & =
+\backslash
+text{
+\backslash
+sout{'the' initial} }
+\backslash
+text{
+\backslash
+emph{any} model of 
+\backslash
+ensuremath{
+\backslash
+Sigma_{1}}}
+\backslash
+
+\backslash
+
+({
+\backslash
+color{green}M_{1}},{
+\backslash
+color{green}M_{2}}) & =
+\backslash
+text{
+\backslash
+sout{'the' initial} }
+\backslash
+text{
+\backslash
+emph{any} model of 
+\backslash
+ensuremath{
+\backslash
+Sigma_{2}}}
+
+\backslash
+end{aligned}
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\ensuremath{\begin{aligned}{\color{blue}T} & =\text{\sout{'the' initial} }\text{\emph{any} model of \ensuremath{\Sigma_{1}}}\\
+({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{\sout{'the' initial} }\text{\emph{any} model of \ensuremath{\Sigma_{2}}}
+\end{aligned}
+}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -7302,7 +7587,7 @@ vspace{-0.5em}
 \[
 \text{\ensuremath{\begin{aligned}{\color{blue}T} & =\text{'the' initial model of \ensuremath{\Sigma_{1}}}\\
 \text{(in Ahrens et al. '20, }T & =\quad any\quad\quad\,\,\text{model of }\ensuremath{\Sigma_{1}})\\
-({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{'the' initial model of \ensuremath{\Sigma_{2}}}
+({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{\sout{'the' initial}'the' initial model of \ensuremath{\Sigma_{2}}}
 \end{aligned}
 }}
 \]
@@ -7316,6 +7601,10 @@ vspace{-0.5em}
 
 
 \end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
 \begin_layout Block
 \begin_inset Argument 2
@@ -7335,7 +7624,7 @@ Models of
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 transition monads 
 \begin_inset Formula $({\color{blue}T},{\color{green}\,M_{1}}{\color{red}\leftarrow Trans\rightarrow}{\color{green}M_{2}})$
 \end_inset
@@ -7343,9 +7632,9 @@ transition monads
  + extra structure, s.t.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula $\text{\ensuremath{\begin{aligned}{\color{blue}T} & =\text{'the' initial model of \ensuremath{\Sigma_{1}}}\\
-\text{(in Ahrens et al. '20, }T & =\quad any \quad\quad \,\,\text{model of } \ensuremath{\Sigma_{1}})\\
+\text{(in Ahrens et al. '20, }T & =\quad any\quad\quad\,\,\text{model of }\ensuremath{\Sigma_{1}})\\
 ({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{'the' initial model of \ensuremath{\Sigma_{2}}}
 \end{aligned}
 }}$
@@ -7409,6 +7698,11 @@ T=\text{ \emph{any} model of \ensuremath{\Sigma_{1}}}\\
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout ExampleBlock
 \begin_inset Argument 2
 status open
@@ -8433,40 +8727,11 @@ Rightarrow$]
 \end_deeper
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="3">
+<lyxtabular version="3" rows="1" columns="3">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Syntax
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Semantics
-\end_layout
-
-\end_inset
-</cell>
-</row>
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
