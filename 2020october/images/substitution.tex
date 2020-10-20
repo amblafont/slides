@@ -1,0 +1,102 @@
+\begin{tikzpicture}
+% [  triangle/.style = 
+% {fill=blue!20, regular polygon, regular polygon sides=3}]
+%  
+ 
+
+%  
+\node[triangle, fill=gray!20] (v1) at (-6.5,5) {$t$};
+\node (x1) at (-6.9,4) {$\textcolor{blue}{x}$};
+\node (xn) at (-6.1,4) {$\textcolor{blue}{x}$}; 
+\node (xi) at (-6.5,4) {$\textcolor{red}{y}$}; 
+\draw  (x1.north) edge (x1.north|-v1.south);
+\draw  (xn.north) edge (xn.north|-v1.south);
+\draw  (xi.north) edge (xi.north|-v1.south);
+
+\node[triangle, fill=blue!20] (u) at (-6.5,2.5) {$u$};
+% \node (y1) at (0.1,3.5) {$\alpha$};
+% \node (yn) at (0.9,3.5) {$\gamma$}; 
+\node (yi) at (-6.5,1.5) {$\gamma$}; 
+%\draw  (y1.north) edge (y1.north|-u.south);
+%\draw  (yn.north) edge (yn.north|-u.south);
+\draw  (yi.north) edge (yi.north|-u.south);
+
+\node[triangle, fill=red!20] (v) at (-6.5,0.5) {$v$};
+\node (y11) at (-6.9,-0.5) {$\alpha$};
+\node (y1i) at (-6.5,-0.5) {$\beta$}; 
+\node (y1n) at (-6.1,-0.5) {$\gamma$}; 
+%\node (y1i) at (3.5,0) {$\dots$}; 
+\draw  (y11.north) edge (y11.north|-v.south);
+\draw  (y1n.north) edge (y1n.north|-v.south);
+\draw  (y1i.north) edge (y1i.north|-v.south);
+
+\node[triangle, fill=blue!20] (u2) at (-4,1) {$u$};
+%\node (y1) at (2.1,1.5) {$\alpha$};
+%\node (yn) at (2.9,1.5) {$\gamma$}; 
+\node (yi) at (-4,0) {$\gamma$}; 
+%\draw  (y1.north) edge (y1.north|-u2.south);
+%\draw  (yn.north) edge (yn.north|-u2.south);
+\draw  (yi.north) edge (yi.north|-u2.south);
+%
+
+\node[triangle, fill=red!20] (v) at (-2.5,1) {$v$};
+\node (y11) at (-2.9,0) {$\alpha$};
+\node (y1n) at (-2.1,0) {$\gamma$}; 
+\node (y1i) at (-2.5,0) {$\beta$}; 
+%\node (y1i) at (3.5,0) {$\dots$}; 
+\draw  (y11.north) edge (y11.north|-v.south);
+\draw  (y1n.north) edge (y1n.north|-v.south);
+\draw  (y1i.north) edge (y1i.north|-v.south);
+
+\node[triangle, fill=blue!20] (u1) at (-1,1) {$u$};
+%\node (y1) at (5.1,1.5) {$\alpha$};
+%\node (yn) at (5.9,1.5) {$\gamma$}; 
+\node (yi) at (-1,0) {$\gamma$}; 
+%\draw  (y1.north) edge (y1.north|-u1.south);
+%\draw  (yn.north) edge (yn.north|-u1.south);
+\draw  (yi.north) edge (yi.north|-u1.south);
+
+\node at (-7.5,2.5) {$\textcolor{blue}{x\mapsto}$};
+\node at (-7.5,0.5) {$\textcolor{red}{y\mapsto}$};
+
+%
+\node[triangle, fill=gray!20, minimum size=4cm] (v1) at (-2.5,3) {$t$};
+%
+ 
+\draw  (u1.north) edge (u1.north|-v1.south);
+\draw  (u2.north) edge (u2.north|-v1.south);
+\draw  (v.north) edge (v.north|-v1.south);
+
+% \node[triangle, fill=gray!20] (v1) at (0,8) 
+% {$t\left[ \begin{array}{c} \textcolor{blue}{x \mapsto u} \\ 
+% \textcolor{red}{y \mapsto  v}\end{array}\right]  $};
+
+\node[triangle, fill=gray!20, 
+minimum size=4cm,
+label=center:{$t\left[ \begin{array}{c} \textcolor{blue}{x := u} \\ 
+\textcolor{red}{y :=  v}\end{array}\right]  $}] (v1) at (1.5,3) {};
+
+\node (v2) at (0.25,0.5) {$\gamma$};
+\draw  (v2.north) edge (v2.north|-v1.south);
+
+\node (v2) at (1,0.5) {$\alpha$};
+\draw  (v2.north) edge (v2.north|-v1.south);
+
+\node (v2) at (1.5,0.5) {$\beta$};
+\draw  (v2.north) edge (v2.north|-v1.south);
+
+\node (v2) at (2,0.5) {$\gamma$};
+\draw  (v2.north) edge (v2.north|-v1.south);
+
+\node (v2) at (2.75,0.5) {$\gamma$};
+\draw  (v2.north) edge (v2.north|-v1.south);
+
+
+% \node (v2) at (2,5) {$\gamma$};
+% \draw  (v2.north) edge (v2.north|-v1.south);
+% \node (v2) at (2.5,5) {$\gamma$};
+% \draw  (v2.north) edge (v2.north|-v1.south);
+
+\node at (-0.5,3) {$=$};
+\draw (-5,5.5) -- (-5,-0.5);
+\end{tikzpicture}

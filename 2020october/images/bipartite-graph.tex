@@ -1,0 +1,17 @@
+\begin{tikzpicture}[->,draw=blue,>=latex,every edge/.append style = { text=blue}]
+%\tikzset{>=latex}
+
+\node (v1) at (-5.5,11) {$(\lambda x.x\ y)\ \mathsf{id}$};
+\node (v2) at (0,11) {$y$};
+\node (w1) at (-5.5,12.5) {$\mathsf{id}\ x$};
+\node (w2) at (0,12.5) {$x$};
+\node (Omega) at (-5.5,9.5) {$\Omega$};
+
+
+\draw  (v1) edge (v2);
+\draw[black]  (-5.5,11) ellipse (1.5 and 2);
+\draw[black]  (0,11) ellipse (1.5 and 2);
+\node at (-5.5,8.5) {Terms};
+\node at (0,8.5) {Values};
+\draw  (w1) edge (w2); 
+\end{tikzpicture}

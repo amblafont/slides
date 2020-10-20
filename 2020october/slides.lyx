@@ -1,0 +1,9789 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usetheme{Warsaw}
+\usepackage{svg}
+% or ...
+
+\usepackage{tikz-cd}
+\usepackage{amsmath,mathtools}
+\usepackage{newtxmath}
+\usepackage{totcount}
+
+
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+\usepackage{etoolbox}
+\setbeamertemplate{headline}{%
+\leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+    \end{beamercolorbox}%
+  }
+}
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\usetikzlibrary{decorations.pathreplacing,tikzmark,calc}
+
+\input{images/triangle-style}
+%\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node[baseline] (#1) {};}
+
+\tikzset{My Node Style/.style={midway, right, xshift=3.0ex, 
+%align=left,
+%anchor=west, 
+%anchor=north west,
+font=\small, draw=none, 
+% align=left,
+anchor=base west,
+ thin, text=black}}
+
+\newcommand\VerticalBrace[4][]{%
+    % #1 = draw options
+    % #2 = top mark
+    % #2 = bottom mark
+    % #4 = label
+\begin{tikzpicture}[overlay,remember picture]
+\path let \p1=(pic cs:#2),\p2=(pic cs:#3) in coordinate (Q1) at ({max(\x1,\x2)+.5em},\y1);
+  \draw[decorate,decoration={brace, amplitude=1.5ex}, #1] 
+%    ([yshift=1ex]:#2.north east)  --  (#3.south east-|#2.north east)
+    ([yshift=1ex]{{pic cs:#2}-|Q1})  --  ({pic cs:#3} -| Q1)
+        node[My Node Style
+%, baseline=brace.east
+] {#4};
+\end{tikzpicture}
+}
+\newcommand{\xyR}[1]{%
+\xydef@\xymatrixrowsep@{#1}
+} % end of \xyR
+\setbeamertemplate{navigation symbols}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+\definecolor{green}{RGB}{0,100,0}
+
+\setbeamercolor{alerted text}{fg=blue}
+
+\newcounter{exemples}
+\regtotcounter{exemples}
+\newcommand\newexemple{\stepcounter{exemples}
+\theexemples/\total{exemples}}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style verbose
+\biblatex_bibstyle authoryear
+\biblatex_citestyle verbose
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: trouver truc à dire sur pourquoi j'ai pas formalisé popl (sinon virer
+ les macarons coq): peut etre dire que je voudrais d'abord formaliser la
+ notion générale de signature?
+\end_layout
+
+\begin_layout Plain Layout
+et tt dépendant: parler de omega groupodies d'abord on part de la théorie
+ de stypes des sensembles globualires, et on l'enrichit
+\end_layout
+
+\begin_layout Plain Layout
+et initiality project
+\end_layout
+
+\begin_layout Plain Layout
+syntaxe nominale: on ne peut pas spécifier l'équation beta, ni la beta réduction
+ car le modèle doit venir avec une substitution!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+In principle, this file can be redistributed and/or modified under the terms
+ of the GNU Public License, version 2.
+ However, this file is supposed to be a template to be modified for your
+ own needs.
+ For this reason, if you use this file as a template and not specifically
+ distribute it as part of a another package/program, the author grants the
+ extra permission to freely copy and modify this file as you see fit and
+ even to delete this copyright notice.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Mathematical specifications of programming languages
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Specifying programming languages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Ambroise Lafont
+\begin_inset Flex InstituteMark
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+\begin_inset Flex InstituteMark
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+University of New South Wales
+\begin_inset Newline newline
+\end_inset
+
+Sydney, Australia
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Use the 
+\begin_inset Quotes eld
+\end_inset
+
+Institute mark
+\begin_inset Quotes erd
+\end_inset
+
+ inset (
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+InstituteMark
+\family default
+) only if there are several affiliations.
+\end_layout
+
+\begin_layout Itemize
+Keep it simple, no one is interested in your street address.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+UNSW
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, but mostly needed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSection[]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline}   
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\redr}[3]{#2\xrightarrow{#1}#3}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\monsubst}[1]{[#1]}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\bind}{\mathsf{{bind}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\app}{\mathsf{{app}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\abs}{\mathsf{{abs}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\appcong}{\mathsf{{app\text{-}cong}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\fix}{\mathsf{fix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+robustify{
+\backslash
+redr}
+\backslash
+robustify{
+\backslash
+monsubst}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "../../these-slides/lyxymatrix.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+That is the question
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+What is a programming language, mathematically?
+\end_layout
+
+\begin_layout Itemize
+In the literature, no well-established consensus.
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus [Ehrhard-Regnier 2003]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+An example that I have thought about during my phD.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+~10 pages (section 2 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ beginning of section 3) describing the programming language
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{not yet satisfyingly addressed by this PhD.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ and proving some 
+\color blue
+properties
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tikzmark{prop1}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In this talk:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a tentative notion of programming language, 
+\color blue
+transition monads
+\color inherit
+ (FSCD 2020, with Tom and Andre Hirschowitz), and
+\end_layout
+
+\begin_layout Itemize
+a discipline for 
+\color blue
+automatically generating 
+\color inherit
+well-behaved transition monads.
+\end_layout
+
+\begin_layout Itemize
+in the untyped case for ease of presentation (simply-typed case works as
+ well)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a programming language?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+éviter de dire donc euh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Example: arithmetic expressions in a calculator
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+https://www.numworks.com/fr/simulateur/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Graphics
+	filename ../../these-slides/images/calculatrice-syntax.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a programming language?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Program execution
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Program 
+\emph default
+= valid 
+\emph on
+syntactic
+\emph default
+ text
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Execution 
+\emph default
+= modification of the program:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../these-slides/images/calculatrice-exec-2.png
+	width 50text%
+	BoundingBox 2bp 2bp 327bp 260bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/calculatrice.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+Operational semantics 
+\series default
+= description of how programs execute.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a programming language?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+A graph whose vertices are programs.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/multigraphe-arith.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1.5em}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+mettre des expressions arithmétiques plutôt que des lambda-termes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Variables = placeholders for expressions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Substitution: 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $(x+y)[x:=5,y:=4]=5+4$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(x+(5+4))[x:=12]=12+(5+4)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Reductions are stable under substitution
+\begin_inset Formula 
+\[
+\frac{{\color{red}x}+(5+4)\to\ensuremath{{\color{red}x}+9}}{{\color{red}12}+(5+4)\to{\color{red}12}+9}\,\cdot
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Formula $\leadsto$
+\end_inset
+
+ 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Reduction monads!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+A difficulty
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Bound variables and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-equivalence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+\begin_inset Formula $\alpha$
+\end_inset
+
+-equivalence
+\series default
+:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lambda x.2\times x\quad\text{ should be identified with }\quad\lambda y.2\times y
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+should be identified with
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $x$
+\end_inset
+
+ is bound by 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ in 
+\begin_inset Formula $\lambda x.2\times x$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout AlertBlock
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Specifying programming languages: 
+\series bold
+initial semantics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Constructing syntax and reductions may be complex (cf.
+\begin_inset space ~
+\end_inset
+
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus).
+\end_layout
+
+\begin_layout Itemize
+Often easier to describe the 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+models
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+Model 
+\begin_inset Formula $\approx$
+\end_inset
+
+ graph with interpretation of the operations and reductions
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+a model of arithmetic expressions: 
+\begin_inset Formula $\mathbb{{Z}}$
+\end_inset
+
+ (or rather 
+\begin_inset Formula $\mathbb{Z}[x,y,\dots]$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Syntactic 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $+$
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+ 
+\begin_inset Formula $\qquad\leadsto\qquad$
+\end_inset
+
+actual 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $+$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ ,
+\end_layout
+
+\begin_layout Itemize
+Syntactic 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\times$
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+ 
+\begin_inset Formula $\qquad\leadsto\qquad$
+\end_inset
+
+actual 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\times$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ , ...
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Programming language 
+\begin_inset Formula $=$
+\end_inset
+
+ 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+initial
+\end_layout
+
+\end_inset
+
+ model.
+\end_layout
+
+\begin_layout Itemize
+Initiality 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+recursion principle
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Notion of signature
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Specifies models.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Effective
+\end_layout
+
+\end_inset
+
+ iff the initial model exists.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Related work: syntax
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Two main notions of syntax:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Substitution monoids
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Formula $\approx$
+\end_inset
+
+ finitary monads) [Fiore-Plotkin-Turi, 1999].
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Nominal sets
+\end_layout
+
+\end_inset
+
+ [Gabbay-Pitts, 1999].
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/frise.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+This approach: monads
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Related work: specifying syntax
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Main notions of signature for monads:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Pointed strong endofunctors
+\end_layout
+
+\end_inset
+
+ [Fiore-Plotkin-Turi, 1999].
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Equational systems
+\end_layout
+
+\end_inset
+
+ [Fiore-Hur, 2010].
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Modules
+\end_layout
+
+\end_inset
+
+ [Hirschowitz-Maggesi, 2007].
+\end_layout
+
+\begin_layout Block
+This approach: modules
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Related work: semantics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Semantic notions of programming language:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Distributive laws
+\end_layout
+
+\end_inset
+
+ [Plotkin-Turi, 1997].
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+double categories
+\end_layout
+
+\end_inset
+
+ [Meseguer, the Montanari school].
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\xymatrix{n\ar[r]^{t}\ar[d]_{\alpha} & m\ar[d]^{\beta}\\
+p\ar[r]_{u} & q
+}
+\]
+
+\end_inset
+
+où t et u sont des opérations, 
+\begin_inset Formula $n$
+\end_inset
+
+ et 
+\begin_inset Formula $p$
+\end_inset
+
+ disent leurs nombres d'arguments et 
+\begin_inset Formula $m$
+\end_inset
+
+ et 
+\begin_inset Formula $q$
+\end_inset
+
+ disent le nombre de sorties.
+ Ca traduit la règle suivante:
+\begin_inset Formula 
+\[
+\frac{x\xrightarrow{\alpha}y}{t(x)\xrightarrow{\beta}u(y)}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Do not cover 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+higher-order
+\end_layout
+
+\end_inset
+
+ languages.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+2-categories
+\end_layout
+
+\end_inset
+
+ [Power, Seely,...].
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+relative monads
+\end_layout
+
+\end_inset
+
+ [Ahrens, 2016].
+\end_layout
+
+\begin_layout Standard
+Only covers 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+congruent
+\end_layout
+
+\end_inset
+
+ semantics.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+In this talk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Mathematical definition of programming languages as 
+\series bold
+transition monads
+\series default
+, generalising 
+\series bold
+reduction monads
+\series default
+ (POPL'20 with B.
+ Ahrens, A.
+ Hirschowitz, M.
+ Maggesi).
+\end_layout
+
+\begin_layout Enumerate
+Specification of 
+\series bold
+syntactic equations
+\series default
+, based on modules over monads.
+\end_layout
+
+\begin_layout Enumerate
+Specification of 
+\series bold
+semantics
+\series default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Systematic use of monads and modules for taking care of substitution.
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+All in collaboration with Benedikt Ahrens, André Hirschowitz and Marco Maggesi.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+AHLM = B.
+ Ahrens, A.
+ Hirschowitz, 
+\series bold
+A.
+ Lafont
+\series default
+, M.
+ Maggesi
+\end_layout
+
+\begin_layout Plain Layout
+HHL = A.
+ Hirschowitz, T.
+ Hirschowitz, 
+\series bold
+A.
+ Lafont
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
+"Reduction monads and their signatures
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+HHL (on HAL): extension to bipartite graphs and simply typed PLs
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
+"Modules over monads and operational semantics
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
+What is initial semantics?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is Initial semantics?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Case of the syntax
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+What does a specific syntax (e.g.
+ arithmetic expressions) feature?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+operations (e.g.
+ binary operations 
+\begin_inset Formula $+$
+\end_inset
+
+, 
+\begin_inset Formula $\times$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+recursion
+\emph default
+ = principle for investigating a piece of valid syntactic data.
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Examples of use of recursion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+count the number of operations in an arithmetic expression
+\end_layout
+
+\begin_layout Itemize
+compute an arithmetic expression
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Structuring a talk is a difficult task and the following structure may not
+ be suitable.
+ Here are some rules that apply for this solution: 
+\end_layout
+
+\begin_layout Itemize
+Exactly two or three sections (other than the summary).
+ 
+\end_layout
+
+\begin_layout Itemize
+At *most* three subsections per section.
+ 
+\end_layout
+
+\begin_layout Itemize
+Talk about 30s to 2min per frame.
+ So there should be between about 15 and 30 frames, all told.
+\end_layout
+
+\begin_layout Itemize
+A conference audience is likely to know very little of what you are going
+ to talk about.
+ So *simplify*! 
+\end_layout
+
+\begin_layout Itemize
+In a 20min talk, getting the main ideas across is hard enough.
+ Leave out details, even if it means being less precise than you think necessary.
+ 
+\end_layout
+
+\begin_layout Itemize
+If you omit details that are vital to the proof/implementation, just say
+ so once.
+ Everybody will be happy with that.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Transition monads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ingredients
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Programming languages (PLs) as graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+(
+\series bold
+Syntax
+\series default
+) vertices = terms 
+\end_layout
+
+\begin_layout Itemize
+(
+\series bold
+Semantics
+\series default
+) arrows = reductions between terms
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Simultaneous substitution: variables 
+\begin_inset Formula $\mapsto$
+\end_inset
+
+ terms
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+monads and modules over them
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(untyped PLs)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Example
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus with 
+\begin_inset Formula $\beta$
+\end_inset
+
+-reduction:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Syntax: 
+\begin_inset Formula $\qquad\qquad S,T\quad::=x\mathrel{|}S\,T\mathrel{|}\lambda x.S$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Modulo 
+\series bold
+
+\begin_inset Formula $\alpha$
+\end_inset
+
+-equivalence
+\series default
+, e.g.
+ 
+\begin_inset Formula 
+\[
+\lambda x.x=\lambda y.y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Reductions: 
+\series default
+
+\begin_inset Formula $\qquad\redr{\beta}{(\lambda x.t)\,u}{t[x:=u]}\qquad+\quad\text{congruences}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Graphs
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+PLs as graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Example: 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus with 
+\begin_inset Formula $\beta$
+\end_inset
+
+-reduction
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/multigraphe.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Columns
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+dimexpr
+\backslash
+paperwidth-35pt
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+pour réduire la marge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(
+\series bold
+Syntax
+\series default
+) vertices = terms e.g.
+ 
+\begin_inset Formula $\Omega=(\lambda x.x\,x)\,(\lambda x.x\,x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(
+\series bold
+Semantics
+\series default
+) arrows = reductions
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ (dedicated syntax: Cf labels)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Definition
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\backslash
+{
+\backslash
+text{edges}
+\backslash
+}
+\backslash
+ar@<+0.5ex>[r]^{
+\backslash
+text{source}}
+\backslash
+ar@<-0.5ex>[r]_{
+\backslash
+text{target}}&
+\backslash
+{
+\backslash
+text{vertices
+\backslash
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Graph = a quadruple 
+\begin_inset Formula $(A,V,\sigma,\tau)$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\begin{align*}
+A & =\{\text{arrows}\} & \sigma & =\text{source of an arrow}\\
+V & =\{\text{vertices\}} & \tau & =\text{target of an arrow}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\xymatrix{A\ar@<+.5ex>[r]^{\sigma}\ar@<-0.5ex>[r]_{\tau} & V}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+A & =\{\text{arrows}\}\\
+V & =\{\text{vertices}\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\sigma: & {\color{blue}A} & \to V\\
+ & {\color{blue}t\xrightarrow{r}u} & \mapsto t
+\end{array}\qquad\begin{array}{rcl}
+\tau: & {\color{blue}A} & \to V\\
+ & {\color{blue}t\xrightarrow{r}u} & \mapsto u
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\sigma(r)\xrightarrow{r}\tau(r)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\partial^{-1}(\{(t,u)\})=\{\text{arrows between \ensuremath{t} and \ensuremath{u}}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+PLs as bipartite graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Example: 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus cbv with big-step operational semantics
+\end_layout
+
+\begin_layout Itemize
+term 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ value
+\end_layout
+
+\begin_layout Itemize
+variables = placeholders for values
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/bipartite-graph.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bipartite graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Definition
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\backslash
+{
+\backslash
+text{edges}
+\backslash
+}
+\backslash
+ar@<+0.5ex>[r]^{
+\backslash
+text{source}}
+\backslash
+ar@<-0.5ex>[r]_{
+\backslash
+text{target}}&
+\backslash
+{
+\backslash
+text{vertices
+\backslash
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Bipartite graph = a quadruple 
+\begin_inset Formula $(A,V_{1},V_{2},\partial)$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\[
+V_{1}\xleftarrow{\sigma}A\xrightarrow{\tau}V_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+A=\{\text{arrows}\}\qquad\qquad\begin{aligned}V_{1} & =\{\text{vertices in first group}\}\\
+V_{2} & =\{\text{vertices in second group}\}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+A & =\{\text{arrows}\}\\
+V_{1} & =\{\text{vertices in first group}\}\\
+V_{2} & =\{\text{vertices in second group}\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\partial: & {\color{blue}A} & \to V\times V\\
+ & {\color{blue}t\to u} & \mapsto(t,u)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+For simplicity, we focus on the particular case of 
+\series bold
+graphs
+\series default
+: 
+\begin_inset Formula $V_{1}=V_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Substitution
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simultaneous substitution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Syntax comes with substitution
+\end_layout
+
+\begin_layout FrameSubtitle
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A title should summarize the slide in an understandable fashion for anyone
+ how does not follow everything on the slide itself.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Columns
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+dimexpr
+\backslash
+paperwidth-20pt
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+pour réduire la marge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+terms (e.g.
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-terms) = trees with free variables as (distinguished) leaves.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/substitution.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Simultaneous substitution made formal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A title should summarize the slide in an understandable fashion for anyone
+ how does not follow everything on the slide itself.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Columns
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+dimexpr
+\backslash
+paperwidth-20pt
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+pour réduire la marge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Free variables indexing
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X\mapsto\{\text{terms taking free variables in \ensuremath{X}}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Example: 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+we may not use all of them
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+L(\emptyset) & =\{\lambda z.z,\dots\}=\{\text{closed terms}\}\\
+L(\{x,y\}) & =\{\lambda z.z,\dots,x,y,x\,y,\dots\}\quad\supset L(\emptyset)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/freevar-indexing.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Columns
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Simultaneous substitution
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\forall f:X\rightarrow L(Y),\qquad\boxed{\begin{array}{rl}
+L(X) & \rightarrow L(Y)\\
+t & \mapsto t[x\mapsto f(x)]\quad\text{(or \ensuremath{t[f]})}
+\end{array}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Note Note
+status open
+
+\begin_layout Block
+For any 
+\begin_inset Formula $f:X\rightarrow L(Y)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Formula 
+\[
+\begin{array}{crcl}
+\bind_{f}: & L(X) & \rightarrow & L(Y)\\
+ & t & \mapsto & t[x\mapsto f(x)]\qquad(\text{or\, }t[f])
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\fauxtext}{of}
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monads model simultaneous substitution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus as a monad 
+\begin_inset Formula $(L,\_[\_],\eta)$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\backslash
+{
+\backslash
+text{edges}
+\backslash
+}
+\backslash
+ar@<+0.5ex>[r]^{
+\backslash
+text{source}}
+\backslash
+ar@<-0.5ex>[r]_{
+\backslash
+text{target}}&
+\backslash
+{
+\backslash
+text{vertices
+\backslash
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Simultaneous substitution 
+\begin_inset Formula $(L,\_[\_])$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Variables are terms
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{cccc}
+\eta_{X}: & X & \rightarrow & L(X)\\
+ & x & \mapsto & \begin{aligned}\begin{tikzpicture}\node[triangle](a)at(0,0){\underline{\ensuremath{x}}};\node(b)at(0,-0.7){\ensuremath{x}};\draw(b.north)edge(b.north|-a.south);\end{tikzpicture}\end{aligned}
+\end{array}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Substitution laws:
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO le faire en tikz: à guache version écrite, a droite, version tikz
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\underline{x}[f]=f(x)\qquad\qquad t[x\mapsto\underline{x}]=t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
++ associativity:
+\begin_inset Formula 
+\[
+t[f][g]=t\left[x\mapsto f(x)[g]\right]
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ne pas expliquer cette dernière règle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Substitution for semantics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Syntax supports substitution.
+ This is also true of semantics.
+\end_layout
+
+\begin_layout FrameSubtitle
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A title should summarize the slide in an understandable fashion for anyone
+ how does not follow everything on the slide itself.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Columns
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+dimexpr
+\backslash
+paperwidth-20pt
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+pour réduire la marge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our notion of PL:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Syntax
+\series default
+: a monad 
+\begin_inset Formula $(L,\_[\_],\eta)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Semantics
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+graphs 
+\begin_inset Formula $\xymatrix{R(X)\ar@<+.5ex>[r]^{\sigma_{X}}\ar@<-0.5ex>[r]_{\tau_{X}} & L(X)}
+$
+\end_inset
+
+ for each 
+\begin_inset Formula $X$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+R(X)=\begin{array}{c}
+\text{total set of reductions between}\\
+\text{terms taking free variables in \ensuremath{X}}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+substitution of reduction: variables 
+\series bold
+
+\begin_inset Formula $\mapsto$
+\end_inset
+
+ 
+\begin_inset Formula $L$
+\end_inset
+
+-terms
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dfrac{\redr rtu}{\redr{r\monsubst f}{t\monsubst f}{u\monsubst f}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Substitution for semantics made formal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+A title should summarize the slide in an understandable fashion for anyone
+ how does not follow everything on the slide itself.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(graphs 
+\begin_inset Formula $\xymatrix{A(X)\ar@<+.5ex>[r]^{\sigma}\ar@<-0.5ex>[r]_{\tau} & V(X)}
+$
+\end_inset
+
+ for each 
+\begin_inset Formula $X$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\text{For any \ensuremath{f:X\rightarrow\boldsymbol{L}(Y)}},\qquad\begin{array}{crl}
+\bind_{f}: & A(X) & \rightarrow A(Y)\\
+ & r & \mapsto r[x\mapsto f(x)]
+\end{array}
+\]
+
+\end_inset
+
+s.t.
+ if 
+\begin_inset Formula $\partial_{X}(r)=(t,u)$
+\end_inset
+
+, then 
+\begin_inset Formula $\partial_{Y}(r[x\mapsto f(x)])=(t[x\mapsto f(x)],u[x\mapsto f(x)])$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Columns
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+dimexpr
+\backslash
+paperwidth-50pt
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+pour réduire la marge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $R$
+\end_inset
+
+ as a 
+\series bold
+module
+\series default
+ over 
+\begin_inset Formula $L$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $R$
+\end_inset
+
+ supports 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+dire que c'est action d'un monoide, et détailler.
+ Parler des exemples?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $L$
+\end_inset
+
+-monadic substitution:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\forall f:X\rightarrow\boldsymbol{L}(Y),\qquad\boxed{\begin{array}{rl}
+R(X) & \rightarrow R(Y)\\
+r & \mapsto r[x\mapsto f(x)]\quad\text{(or \ensuremath{r[f]})}
+\end{array}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+For any 
+\begin_inset Formula $f:X\rightarrow\boldsymbol{L}(Y)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{array}{crl}
+\bind_{f}: & R(X) & \rightarrow R(Y)\\
+ & r & \mapsto r[x\mapsto f(x)]\quad(\text{or }r[f])
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+s.t.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
++ substitution laws
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
++\text{ substitutio }
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+r[x\mapsto\underline{x}]=r\qquad\qquad r[f][g]=r\left[x\mapsto f(x)[g]\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Other examples of 
+\begin_inset Formula $L$
+\end_inset
+
+-modules
+\series default
+: 
+\begin_inset Formula $L$
+\end_inset
+
+, 
+\begin_inset Formula $L\times L$
+\end_inset
+
+, 1, 
+\begin_inset Formula $\dots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Other example of module over 
+\begin_inset Formula $L$
+\end_inset
+
+: 
+\begin_inset Formula $L$
+\end_inset
+
+ itself.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+ as 
+\series bold
+
+\begin_inset Formula $L$
+\end_inset
+
+-module morphisms
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\redr rtu\quad\overset{}{\leadsto}\quad\redr{r[f]}{t'}{u'}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Furthermore,
+\end_layout
+
+\end_inset
+
+
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+t
+\backslash
+xrightarrow{r}{}u
+\backslash
+;
+\backslash
+overset{}{
+\backslash
+leadsto}
+\backslash
+; t'
+\backslash
+xrightarrow{r[f]}{}{u'}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+text{with}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+left
+\backslash
+{
+\backslash
+begin{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+        t'&=t[f] 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        u'&=u[f]
+\end_layout
+
+\begin_layout Plain Layout
+
+       
+\backslash
+end{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+right.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+text{i.e.,}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+left
+\backslash
+{
+\backslash
+begin{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+       {
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+color{blue}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+sigma(r[f])=
+\backslash
+sigma(r)[f]} 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+       {
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+color{blue}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tau(r[f])=
+\backslash
+tau(r)[f]} 
+\end_layout
+
+\begin_layout Plain Layout
+
+       
+\backslash
+end{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+right.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+(
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+left.
+\backslash
+begin{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+        B'&=-
+\backslash
+partial 
+\backslash
+times E,
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        E'&=
+\backslash
+partial 
+\backslash
+times B - 4
+\backslash
+pi j,
+\end_layout
+
+\begin_layout Plain Layout
+
+       
+\backslash
+end{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+right
+\backslash
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+left(
+\end_layout
+
+\begin_layout Plain Layout
+
+%qsdqs
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+%t' & = t[f] 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%u' & = u [f]
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+end{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+right.
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+text{i.e.,}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+left
+\backslash
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+begin{aligned}{
+\backslash
+color{blue}
+\backslash
+sigma(r[f])=
+\backslash
+sigma(r)[f]}
+\backslash
+
+\backslash
+{
+\backslash
+color{red}
+\backslash
+tau(r[f])=
+\backslash
+tau(r)[f]}
+\backslash
+end{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+right.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+
+\color blue
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\color blue
+Source
+\color inherit
+ and 
+\color red
+target
+\color inherit
+ of 
+\begin_inset Formula $r[f]$
+\end_inset
+
+ unspecified by the module structure on 
+\begin_inset Formula $A$
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+
+
+\color inherit
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+By definition of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau$
+\end_inset
+
+, 
+\begin_inset Formula $\qquad\redr{r\monsubst f}{{\color{blue}\sigma(r\monsubst f)}}{{\color{red}\tau(r[f])}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\boxed{\redr{r\monsubst f}{{\color{blue}\sigma(r\monsubst f)}}{{\color{red}\tau(r[f])}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $t\xrightarrow{r}u$
+\end_inset
+
+, then 
+\begin_inset Formula $\sigma(r[f])=t[f]$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau(r[f])=u[f]$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\text{Then},\quad\dfrac{\redr r{\sigma(r)}{\tau(r)}}{\redr{r\monsubst f}{{\color{blue}\sigma(r)\monsubst f}}{{\color{red}\tau(r)[f]}}}\quad\text{enforces\ensuremath{\quad\begin{aligned}{\color{blue}\sigma(r[f])=\sigma(r)[f]}\\
+{\color{red}\tau(r[f])=\tau(r)[f]}
+\end{aligned}
+}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\dfrac{\redr r{\sigma(r)}{\tau(r)}}{\redr{r\monsubst f}{{\color{blue}\sigma(r)\monsubst f}}{{\color{red}\tau(r)[f]}}}\\
+=\\
+\\
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+enforces 
+\begin_inset Formula 
+\[
+{\color{blue}\sigma(r[f])=\sigma(r)[f]}\qquad{\color{red}\tau(r[f])=\tau(r)[f]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.3em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Commutation with substitution 
+\begin_inset Formula $\Leftrightarrow$
+\end_inset
+
+ Module morphisms 
+\begin_inset Formula $\sigma,\tau:R\rightarrow L$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Reduction monads
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Summary: graphs + substitution.
+\end_layout
+
+\begin_layout Definition
+A 
+\series bold
+reduction monad
+\series default
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $(T,R,\sigma,\tau)$
+\end_inset
+
+ denoted by
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\xymatrix{R\ar@<+.5ex>[r]^{\sigma}\ar@<-0.5ex>[r]_{\tau} & T}
+$
+\end_inset
+
+ consists of
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $T$
+\end_inset
+
+ = monad (= module over itself)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R$
+\end_inset
+
+ = module over 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma,\tau:R\rightarrow T$
+\end_inset
+
+ are 
+\begin_inset Formula $T$
+\end_inset
+
+-module morphisms.
+\end_layout
+
+\end_deeper
+\begin_layout Example
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus with 
+\begin_inset Formula $\beta$
+\end_inset
+
+-reduction.
+\end_layout
+
+\begin_layout Itemize
+Untyped case: base category = 
+\begin_inset Formula $Set$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Simply-typed case: base category = 
+\begin_inset Formula $Set^{Types}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+How can we specify a reduction monad?
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(Syntax)
+\end_layout
+
+\end_inset
+
+ signature for the (syntactic) operations for the monad;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(Semantics)
+\end_layout
+
+\end_inset
+
+ reduction rules.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+,
+\color blue
+ involving some specified syntactic operations
+\color inherit
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Use of a general notion of 
+\series bold
+signature
+\series default
+ managing this 
+\color blue
+dependency
+\color inherit
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+application plutot que +, et Tom préfère la version diagrammatique
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Transition monads
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Generalising cbv 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus, and reduction monads
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbv
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(big-step)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Values$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(monad)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzcd}[ampersand replacement=
+\backslash
+&, column sep=tiny]
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+& Transitions 
+\backslash
+arrow[ld, "
+\backslash
+mathclap{source}"', sloped] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+arrow[rd, "
+\backslash
+mathclap{target}", sloped] 
+\backslash
+&        
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Terms 
+\backslash
+&                                                        
+\backslash
+& Values
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{-2em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+transition
+\begin_inset space ~
+\end_inset
+
+monads
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a monad 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+-module morphisms
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $M_{1}\xleftarrow{source}Trans\xrightarrow{target}M_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+reduction monads
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a monad 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T\xleftarrow{source}Trans\xrightarrow{target}T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Examples:
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\overline{\lambda}\mu$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\pi$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GSOS specifications
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbv 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(big/small-step).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+
+\series bold
+\begin_inset Note Note
+status open
+
+\begin_layout Description
+cbv
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus 
+\begin_inset Formula $Terms\xleftarrow{source}Transitions\xrightarrow{target}Values$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+transition
+\begin_inset space ~
+\end_inset
+
+monads T-module morphisms 
+\begin_inset Formula $M_{1}\xleftarrow{source}Trans\xrightarrow{target}M_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+(reduction
+\begin_inset space ~
+\end_inset
+
+monads of Ahrens et als.
+ T-module morphisms 
+\begin_inset Formula $T\xleftarrow{source}Trans\xrightarrow{target}T$
+\end_inset
+
+
+\series bold
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbv 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a transition monad
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Values$
+\end_inset
+
+ (as a monad)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a monad 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Terms\xleftarrow{source}Transitions\xrightarrow{target}Values$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T-module morphisms
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+&
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $M_{1}\xleftarrow{source}Trans\xrightarrow{target}M_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Section
+Generating transition monads (Initial Semantics)
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Constructing 
+\emph on
+transition monads
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+We have a definition of programming languages as 
+\color blue
+transition monads
+\color inherit
+.
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+Can we construct them from 
+\emph on
+simple specifications
+\emph default
+?
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+We provide:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a notion of 
+\emph on
+simple specification = 
+\series bold
+\emph default
+signature
+\series default
+ for transition monads
+\end_layout
+
+\begin_layout Itemize
+a theorem ensuring the existence (unique up to iso) of a transition monad
+ matching a spec
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Three-level specification
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Transition monad = (
+\color blue
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\color inherit
+ , 
+\begin_inset Formula ${\color{green}M_{1}}{\color{red}\xleftarrow{source}Trans\xrightarrow{target}}{\color{green}M_{2}}$
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Three spec steps
+\series default
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Step
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Component
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nature
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Specification
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula ${\color{blue}T}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+monad
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operations + Equations
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{green}M_{1}},{\color{green}M_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+-modules
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operations + Equations
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{red}Trans}$
+\end_inset
+
+,
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{red}source}$
+\end_inset
+
+,
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{red}target}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+transition structure
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transition rules as
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\dfrac{t_{1}\rightarrow u_{1}\dots t_{n}\rightarrow u_{n}}{t\rightarrow u}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Enumerate
+
+\color blue
+\begin_inset Formula ${\color{blue}T}$
+\end_inset
+
+
+\color inherit
+ : monad 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ operations + equations
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $({\color{green}M_{1}},{\color{green}M_{2}})$
+\end_inset
+
+ : 
+\begin_inset Formula $T$
+\end_inset
+
+-modules 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ operations + equations
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $({\color{red}Trans},{\color{red}source},{\color{red}target})$
+\end_inset
+
+ : 
+\begin_inset Quotes eld
+\end_inset
+
+transition structure
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ transition rules such as
+\begin_inset Formula 
+\[
+\frac{t_{1}\rightarrow u_{1}\dots t_{n}\rightarrow u_{n}}{t\rightarrow u}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Hence,
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+Rightarrow$]
+\end_layout
+
+\end_inset
+
+Three notions of signatures.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Section
+Examples
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Examples
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Transition monad = (
+\color blue
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\color inherit
+ , 
+\begin_inset Formula ${\color{green}M_{1}}{\color{red}\xleftarrow{source}Trans\xrightarrow{target}}{\color{green}M_{2}}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Upcoming examples
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+full signature (sketched)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+signature for 
+\color blue
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+left congruence rule for application
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+congruence rule for abstraction
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(involves a binding variable)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbv 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+signature for 
+\begin_inset Formula ${\color{green}M_{i}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+signature for 
+\begin_inset Formula ${\color{green}M_{i}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+signature for 
+\color blue
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+full signature (sketched)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+signature for 
+\color blue
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+signature for 
+\color blue
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+left congruence rule for application
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+congruence rule for abstraction
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(involves a binding variable)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbv 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+signature for 
+\begin_inset Formula ${\color{green}M_{i}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+signature for 
+\begin_inset Formula ${\color{green}M_{i}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newexemple
+\end_layout
+
+\end_inset
+
+: small-step cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Transition monad = (
+\color blue
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\color inherit
+ , 
+\begin_inset Formula ${\color{green}M_{1}}{\color{red}\xleftarrow{source}Trans\xrightarrow{target}}{\color{green}M_{2}}$
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Signature for cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+-calculus
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Step
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Component
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nature
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Specification
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula ${\color{blue}T}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+monad
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operations = app, abs
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{green}M_{1}},{\color{green}M_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+-modules
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $M_{1}=M_{2}=T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{red}Trans}$
+\end_inset
+
+,
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{red}source}$
+\end_inset
+
+,
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{red}target}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+transition
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+structure
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta$
+\end_inset
+
+-rule + congruences
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newexemple
+\end_layout
+
+\end_inset
+
+: Specify the monad of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-terms
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+(untyped) cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus: 
+\begin_inset Formula $(T,T\xleftarrow{source}Trans\xrightarrow{target}T$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Syntax 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+alert{generated}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+application
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T\times T\rightarrow T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda$
+\end_inset
+
+-abstraction
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda x.t$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T'\rightarrow T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T'$
+\end_inset
+
+ = module of terms depending
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on an extra variable
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(here, 
+\begin_inset Formula $x$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(variables)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Var\rightarrow T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Signature for 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+2 operations (application/abstraction)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Monads always have variables: no need to specify them
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+operation
+\begin_inset Quotes erd
+\end_inset
+
+= 
+\emph on
+module morphism
+\emph default
+: compatible with substitution:
+\begin_inset Formula 
+\[
+(t_{1}\,t_{2})[y\mapsto u_{y}]=t_{1}[y\mapsto u_{y}]\,t_{2}[y\mapsto u_{y}]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+References 
+\begin_inset Quotes eld
+\end_inset
+
+Second-order equational logic
+\begin_inset Quotes erd
+\end_inset
+
+ Fiore-Hur '10, 
+\begin_inset Quotes eld
+\end_inset
+
+Modular specification of monads
+\begin_inset Quotes erd
+\end_inset
+
+ Ahrens et al.
+ '19
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Disgression on 
+\begin_inset Formula $T'$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $M'$
+\end_inset
+
+= 
+\series bold
+derivative
+\series default
+ of a module 
+\begin_inset Formula $M$
+\end_inset
+
+:
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M'(X)=M(\tikzmarknode{freshv}{X\amalg\{\diamond\}})
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\boxed{M'(X)=M(X\coprod\{\tikzmarknode{freshv}{\diamond}\})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+draw[decorate,decoration={brace, amplitude=1.5ex}] 
+\end_layout
+
+\begin_layout Plain Layout
+
+%    ([yshift=1ex]:#2.north east)  --  (#3.south east-|#2.north east)
+\end_layout
+
+\begin_layout Plain Layout
+
+    (freshv.north west)  --  (freshv.north east) node[ above=.6em]{$X$ extended
+ with a fresh variable $
+\backslash
+diamond$};
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+node[above right= 1cm of freshv] (legfreshv) {fresh variable};
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+draw[->] (legfreshv) to[bend right] (freshv);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+used to model an operation binding a variable.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\abs: & L' & \rightarrow L\qquad\left\{ \quad\begin{aligned}\abs_{X}:L(X\amalg\{\diamond\}) & \rightarrow L(X)\\
+t & \mapsto\lambda\diamond.t
+\end{aligned}
+\right.\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newexemple
+\end_layout
+
+\end_inset
+
+: Left congruence for application
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus: 
+\begin_inset Formula $(T,T\xleftarrow{source}Trans\xrightarrow{target}T$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Left congruence rule for application
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dfrac{{\color{blue}t_{1}}\rightarrow{\color{blue}t_{2}}}{app({\color{blue}t_{1}},{\color{blue}u})\rightarrow app({\color{blue}t_{2}},{\color{blue}u})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+Easy interpretation of transition rules:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Components of the rule
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interpreted as...
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3 
+\begin_inset Quotes eld
+\end_inset
+
+metavariables
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $t_{1}{\normalcolor ,}t_{2}{\normalcolor ,}u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a 
+\begin_inset Quotes eld
+\end_inset
+
+metavariable
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $T$
+\end_inset
+
+-module
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V={\color{blue}T}\times{\color{blue}T}\times{\color{blue}T}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 
+\begin_inset Quotes eld
+\end_inset
+
+premise
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{green}t_{1}}\rightarrow{\color{red}t_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}V\rightarrow & \,M_{1}\times M_{2}\\
+({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}}{\normalcolor ,}{\color{blue}u})\mapsto & \,({\color{green}t_{1}},{\color{red}t_{2}})
+\end{aligned}
+\text{\quad}$
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(
+\begin_inset Formula $T$
+\end_inset
+
+-module
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+morphism)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+conclusion
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\normalcolor {\color{green}app(t_{1},u)}\rightarrow{\color{red}app(t_{2},u)}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}V\rightarrow & \,M_{1}\times M_{2}\\
+({\color{blue}t_{1}},{\color{blue}t_{2}},{\color{blue}u})\mapsto & \,(\:{\color{green}app(t_{1},u)},{\color{red}\;app(t_{2},u)}\:)
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newexemple
+\end_layout
+
+\end_inset
+
+: Binding variables in rules
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus: 
+\begin_inset Formula $(T,T\xleftarrow{source}Trans\xrightarrow{target}T$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Congruence rule for abstraction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dfrac{{\color{blue}t_{1}}\rightarrow{\color{blue}t_{2}}}{\lambda x.{\color{blue}t_{1}}\rightarrow\lambda x.{\color{blue}t_{2}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+metavariables
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\color blue
+
+\begin_inset Formula $t_{1}$
+\end_inset
+
+
+\color inherit
+ and 
+\color blue
+
+\begin_inset Formula $t_{2}$
+\end_inset
+
+
+\color inherit
+: terms that may depend on 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $T'$
+\end_inset
+
+ = 
+\begin_inset Formula $T$
+\end_inset
+
+-module of terms depending on an additional variable
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
+(in fact, abstraction is an operation 
+\begin_inset Formula $T'\xrightarrow{abs}T$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Components of the rule
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interpreted as...
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2 
+\begin_inset Quotes eld
+\end_inset
+
+metavariables
+\begin_inset Quotes erd
+\end_inset
+
+:
+\color blue
+ 
+\begin_inset Formula $t_{1}{\normalcolor ,}t_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a 
+\begin_inset Quotes eld
+\end_inset
+
+metavariable
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $T$
+\end_inset
+
+-module 
+\begin_inset Formula $V={\color{blue}T'}\times{\color{blue}T'}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 
+\begin_inset Quotes eld
+\end_inset
+
+premise
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{green}t_{1}}\rightarrow{\color{red}t_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}V\rightarrow & \,T'\times T'\\
+({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}})\mapsto & \,({\color{green}t_{1}},{\color{red}t_{2}})
+\end{aligned}
+\text{\quad}$
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(
+\begin_inset Formula $T$
+\end_inset
+
+-module
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+morphism)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+conclusion
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\normalcolor {\color{green}\lambda x.t_{1}}\rightarrow{\color{red}\lambda x.t_{2}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}V\rightarrow & \,T\times T\\
+({\color{blue}t_{1}},{\color{blue}t_{2}})\mapsto & \,(\:{\color{green}\lambda x.t_{1}},{\color{red}\;\lambda x.t_{2}}\:)
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newexemple
+\end_layout
+
+\end_inset
+
+: Specify 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ for cbv
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtolength{
+\backslash
+tabcolsep}{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transition monad
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+= (
+\begin_inset Formula $T$
+\end_inset
+
+
+\begin_inset Formula $,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{green}M_{1}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\normalcolor \xleftarrow{source}Trans\xrightarrow{target}\,\,}{\color{green}M_{2}}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cbv 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+= 
+\begin_inset Formula $(Vals,$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{green}Tms}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\xleftarrow{source}Trans\xrightarrow{target}{\color{green}Vals})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtolength{
+\backslash
+tabcolsep}{+0.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Syntax of values and terms
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\,Vals:\,v,w & ::=x|\lambda x.t\\
+Tms:\,t,u & ::=\underbrace{{x|\lambda x.t}}|t\,u\\
+\vspace{-1em} & ::=\quad\,\,v\quad\,|t\,u
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+begin{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+Vals:
+\backslash
+,v,w&::=x|
+\backslash
+lambda x.t
+\backslash
+
+\backslash
+Tms:
+\backslash
+,t,u&::=
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+underbrace{
+\backslash
+smash{x|
+\backslash
+lambda x.t}}
+\end_layout
+
+\begin_layout Plain Layout
+
+|t
+\backslash
+,u
+\backslash
+
+\backslash
+[-0.6em]
+\end_layout
+
+\begin_layout Plain Layout
+
+&::=
+\backslash
+quad
+\backslash
+,v
+\backslash
+quad
+\backslash
+,|t
+\backslash
+,u
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{aligned}$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow\arraycolsep=0pt\quad\begin{array}{ccccc}
+{\color{green}\text{terms}} & \,\,\,=\,\,\, & {\color{blue}\text{binary trees}} & {\color{red}\,\,of\,} & \text{values}\\
+{\color{green}Tms} & \,\,\,=\,\,\, & {\color{blue}BinTree} & \!{\color{red}\circ} & Vals
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Block
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Rightarrow\arraycolsep=0pt\qquad\begin{array}{ccccc}
+\text{terms} & \,\,\,=\,\,\, & \text{{\color{blue}binary\,trees}} & {\color{red}\,\,of\,} & \text{values}\\
+{\color{green}Tms} & \,\,\,=\,\,\, & {\color{blue}BinTree} & \!{\color{red}\circ} & Vals
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+In fact, by definition of a transition monad,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula ${\color{green}M_{i}}$
+\end_inset
+
+ is always of the shape 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula ${\color{blue}S_{i}}\circ T$
+\end_inset
+
+.
+ Here, 
+\begin_inset Formula 
+\[
+T=Vals\qquad\qquad{\color{green}M_{1}}={\color{blue}BinTree}\circ T\qquad\qquad{\color{green}M_{2}}={\color{blue}Id}\circ T(=T)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Signature for 
+\color green
+
+\begin_inset Formula $M_{i}$
+\end_inset
+
+
+\color inherit
+ 
+\begin_inset Formula $\,=\,$
+\end_inset
+
+ Signature for 
+\color blue
+
+\begin_inset Formula $S_{i}$
+\end_inset
+
+
+\color inherit
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}\text{Terms} & =\text{binary trees {\color{red}of} values}\\
+{\color{green}Tms} & =BinTree\,{\color{red}\circ}Vals
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\backslash
+arraycolsep=0pt
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+Rightarrow$]
+\end_layout
+
+\end_inset
+
+a term = a binary tree of values
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Tms=BinTree\circ Vals
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Signature for 
+\begin_inset Formula $Tms$
+\end_inset
+
+ = Signature for 
+\begin_inset Formula $BinTree$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Signature for 
+\begin_inset Formula $BinTree$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+variables + 1 binary operation (accounts for 
+\begin_inset Formula $t\,u$
+\end_inset
+
+ in 
+\begin_inset Formula $Tms$
+\end_inset
+
+) 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newexemple
+\end_layout
+
+\end_inset
+
+: Specify 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ for DLC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Transition monad = (
+\begin_inset Formula $T$
+\end_inset
+
+ , 
+\begin_inset Formula ${\color{green}M_{1}}\xleftarrow{source}Trans\xrightarrow{target}{\color{green}M_{2}}$
+\end_inset
+
+) 
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus (DLC)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Syntax monad 
+\begin_inset Formula $T$
+\end_inset
+
+ of terms (a variant of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus)
+\end_layout
+
+\begin_layout Description
+Semantics 
+\begin_inset Formula $\text{a}\text{ }\underbrace{\text{term }t}_{\mathclap{{\color{green}M_{1}}={\color{blue}Id}\circ T\,(=T)}}$
+\end_inset
+
+ reduces to a 
+\begin_inset Formula $\underbrace{\text{multiterm }t_{1}+\dots+t_{n}}_{\mathclap{\begin{aligned}{\color{green}\text{multiterms}} & ={\color{blue}\text{formal sum}}\,\text{of terms}\\
+{\color{green}M_{2}} & ={\color{blue}FormalSum}\,\circ T
+\end{aligned}
+}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+In fact, by definition of a transition monad,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ is always of the shape 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $S_{i}\circ T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Signature for 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ 
+\begin_inset Formula $\,=\,$
+\end_inset
+
+ Signature for 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Signature for 
+\begin_inset Formula $FormalSum$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operations
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a constant 0, a binary operation +, variables
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Equations
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+commutativity, associativity, unitality
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+-calculus
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Syntax 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus + 2 operations
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Semantics Terms reduce to multi-terms (= formal sum of terms)
+\end_layout
+
+\begin_layout Plain Layout
+Hence, 
+\begin_inset Formula $M_{1}=T$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{2}=FormalSum\circ T$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Specification as an equational system
+\emph on
+ 
+\emph default
+(Fiore-Hur '09)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newexemple
+\end_layout
+
+\end_inset
+
+: the monad of DLC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus: 
+\begin_inset Formula $(T,M_{1}\xleftarrow{source}Trans\xrightarrow{target}M_{2}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Syntax of DLC = variant of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Application of DLC
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+app:(t,U)\mapsto t\,U
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\arraycolsep=0pt\begin{array}{rcccccl}
+\text{input of \ensuremath{app}} & \,\,\,=\,\,\, & \text{a term \ensuremath{t}} & \text{{\color{blue}\,\,and}\,\,} & \text{a multi-term} & U & =u_{1}+\dots+u_{n}\\
+ & \,\,\,=\,\,\, & \text{a term \phantom{t}} & \text{\,\,{\color{blue}and}\,\,} & \text{a formal sum} & {\color{blue}\,of}\, & \text{terms }\\
+\text{input \emph{module} of \ensuremath{app}} & \,\,\,=\,\,\, & T & {\color{blue}\times} & (FormalSum & {\color{blue}\circ} & T)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Signature for 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+3 operations (no equation):
+\end_layout
+
+\begin_layout Block
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+application 
+\begin_inset Formula $t\,U$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T\times(FormalSum\circ T)\rightarrow T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+differential application 
+\begin_inset Formula $Dt\cdot u$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T\times T\rightarrow T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda$
+\end_inset
+
+-abstraction
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(as before)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Conclusion
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+PLs as transition monads
+\end_layout
+
+\begin_layout Itemize
+Signatures for reduction monads with effectivity theorem
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Main theorems regarding syntax: formalized within the Coq UniMath library
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Perspectives and other works
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Abstracting well-known theorems in this setting, e.g.
+ Howe's method: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+A cellular Howe's theorem
+\begin_inset Quotes erd
+\end_inset
+
+, LICS'20 with T.
+ Hirschowitz and P.
+ Borthelle.
+\end_layout
+
+\begin_layout Itemize
+can it be adapted to the setting of transition monads?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Morphisms of transition monads = compilations
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+explore different variants of this definition, leading to different correctness
+ criteria.
+\end_layout
+
+\begin_layout Itemize
+replay well-known examples in the setting of transition monads, e.g, Plotkin's
+ CPS translations of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Effectful transitions?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Articles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+AHLM CSL 2018 about 
+\emph on
+quotients of algebraic 1-signatures
+\emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
+"High-Level Signatures and Initial Semantics
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+AHLM FSCD 2019 about 
+\emph on
+algebraic 2-signatures
+\emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
+"Modular Specification of Monads Through Higher-Order Presentations
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+AHLM POPL 2020 about 
+\emph on
+reduction monads
+\emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
+"Reduction monads and their signatures
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+HHL (on HAL): extension to bipartite graphs and simply typed PLs
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
+"Modules over monads and operational semantics
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+AHLM = Ahrens, A.
+ Hirschowitz, 
+\emph on
+Lafont
+\emph default
+, Maggesi
+\end_layout
+
+\begin_layout Plain Layout
+HHL = A.
+ Hirschowitz, T.
+ Hirschowitz, 
+\emph on
+Lafont
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset Note Note
+status open
+
+\begin_layout Section*
+\start_of_appendix
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+All of the following is optional and typically not needed.
+\end_layout
+
+\end_inset
+
+Appendix
+\end_layout
+
+\begin_layout Subsection*
+For Further Reading
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status collapsed
+
+\begin_layout Plain Layout
+allowframebreaks
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+For Further Reading
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+beamertemplatebookbibitems
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start with overview books.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Author1990"
+literal "true"
+
+\end_inset
+
+A.
+ Author.
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+
+\emph on
+Handbook of Everything
+\emph default
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ Some Press, 1990.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+beamertemplatearticlebibitems
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Followed by interesting articles.
+ Keep the list short.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Someone2002"
+literal "true"
+
+\end_inset
+
+S.
+ Someone.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ On this and that
+\emph on
+.
+
+\emph default
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+
+\emph on
+Journal on This and That
+\emph default
+.
+ 2(1):50–100, 2000.
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

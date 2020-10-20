@@ -1,0 +1,15 @@
+\begin{tikzpicture}[->,draw=blue,>=latex,every edge/.append style = { text=blue}]
+%\tikzset{>=latex}
+
+\node (v1) at (-6,11) {$(\lambda x.\ x\ y)\ \mathsf{id}$};
+\node (v2) at (-2,10) {$\mathsf{id}\ y$};
+\node (Omega) at (-5,7) {$\Omega$};
+  
+\node (Omega2) at (1,9) {$\Omega\ \Omega$};
+\draw  (Omega) edge[loop, looseness=20] node[sloped, above] {$\beta$}(Omega);
+\draw  (v1) edge node[sloped, above] {$\beta$}(v2);
+\draw  (Omega2) edge[loop, looseness=20] node[sloped, above] {$\beta\ \Omega$}(Omega2);
+\draw  (Omega2) edge[loop below, looseness=40] node[sloped, below] {$\Omega\ \beta$}(Omega2);
+\node (v3) at (-1,7.5) {$y$};
+\draw  (v2) edge node[sloped, above] {$\beta$}(v3);
+\end{tikzpicture}

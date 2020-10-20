@@ -1,0 +1,23 @@
+\begin{tikzpicture}[->,draw=blue,>=latex,every edge/.append style = { text=blue}]
+%\tikzset{>=latex}
+
+\node (v1) at (-6,11) {$(2+2)\times 3$};
+\node (v2) at (-5.5,9) {$4 \times 3$};
+  
+\node (Omega2) at (-1,11) {$3\times 2 + 2 \times 2$};
+\draw  (v1) edge node[sloped, above] {} (v2);
+\node (v3) at (-3.5,8) {$12$};
+\draw  (v2) edge node[sloped, above] {}(v3);
+\node (v7) at (-3,10) {$6+2\times 2$};
+\node (v4) at (1,10) {$3\times 2+4$};
+\node (v5) at (-1,9) {$6+4$};
+\node (v6) at (-1,8) {$10$};
+\draw  (Omega2) edge (v4);
+\draw  (v4) edge (v5);
+\draw  (v5) edge (v6);
+\draw  (Omega2) edge (v7);
+\draw  (v7) edge (v5);
+\node (v8) at (3,10.5) {$x+(5+4)$};
+\node (v9) at (3,9) {$x+9$};
+\draw  (v8) edge (v9);
+\end{tikzpicture}

@@ -1,0 +1,31 @@
+\[
+L(\{x,y\})=\left\{
+\begin{aligned}
+\begin{tikzpicture}
+ % \node[triangle, label=center:$\lambda z.z$, minimum size=1.5cm] at (-10.5,4.5) {};
+%  \node[anchor=west] at (-9.5,4.5) {$\in L(\emptyset)=\{ \text{closed terms} \}$};
+\node[triangle, label=center:$\lambda z.z$, minimum size=1.5cm] at (-16.5,3) {};
+%/*
+ \node[triangle, label=center:$x$, minimum size=1.5cm] (u) at (-14.5,3) {};
+\node (yi) at (-14.5,2) {$x$}; 
+\draw  (yi.north) edge (yi.north|-u.south);
+\node[triangle, label=center:$y$, minimum size=1.5cm] (u) at (-12.5,3) {};
+\node (yi) at (-12.5,2) {$y$}; 
+\draw  (yi.north) edge (yi.north|-u.south);
+%*/
+\node[triangle, label=center:$x\ y$, minimum size=1.5cm] (u) at (-10.5,3) {};
+\node (yi) at (-11,2) {$x$}; 
+\draw  (yi.north) edge (yi.north|-u.south);
+\node (yi) at (-10,2) {$y$}; 
+\draw  (yi.north) edge (yi.north|-u.south); 
+\node at (-15.5,3) {,};
+\node at (-13.5,3) {,};
+\node at (-11.5,3) {,};
+\node at (-9.5,3) {,};
+%\node[anchor=west] at (-9.5,3) {$\in L(\{x,y\})$};
+%\node[anchor=east] at (-18.5,3) {$\ L(\{x,y\}) = $};
+\node at (-9,3.03) {\dots};
+\end{tikzpicture}
+\end{aligned}
+\right\}
+\]

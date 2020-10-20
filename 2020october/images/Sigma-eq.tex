@@ -1,0 +1,39 @@
+\begin{tikzpicture}[->]
+% \node (v2) at (0,0) {$\boxed{T\mapsto \Sigma(T)}$};
+\node (v1) at (0.5,-1) {model of $\Sigma$};
+%\node (v1) at (-1,-1) {model of $\Sigma$};
+\node (v2) at (6.5,-1) {parallel pair of $T$-module morphisms} ;
+
+\node[anchor=base] (v3) at (6,0) {$\left(
+	\xymatrix{A(M)\ar@<+.5ex>^{u_M}[r]\ar@<-.5ex>_{v_M}[r] & B(M)}
+	\right)$};
+\node[anchor=base] (v4) at (1,0) {$M=
+(\Sigma(T)\rightarrow T)
+% \small \begin{pmatrix}
+% \xymatrix@R=1em{
+% \Sigma(T)\ar[d]\\
+% T
+% }
+% \end{pmatrix}
+ $};
+ %\node[anchor=base] at (3,0) {$\mapsto$};
+\node[anchor=base] at ($(v4.base east)!0.5!(v3.base west)$) {$\mapsto$};
+\draw[shorten >= -5pt]  (v2) edge (v3);
+\draw  (v1) edge (v4);
+%\draw  (-1,1) rectangle (5.5,-0.5);
+\draw  (v4.north west|-v3.north) rectangle (v3.south east);
+% \node[anchor=base west] at (5,0) {e.g. $\boxed{
+% %T\times T\xrightarrow{+}{} T
+% \begin{array}{c}
+% \xymatrix@R=1em{T\times T\ar[d]^+ \\ T}
+% \end{array}
+% \mapsto
+% \xymatrix@R=0.25em@C=1em{T\times T 
+% \ar@/^+1.5em/[rr]^+
+% \ar@/^-0.5em/[rd]_-{\text{swap}}
+%  &  & T\\
+%  & T\times T
+% \ar@/^-0.5em/[ru]_-+
+% }	 
+% 	}$};
+\end{tikzpicture}
