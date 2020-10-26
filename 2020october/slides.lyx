@@ -4832,7 +4832,7 @@ begin{tikzcd}[ampersand replacement=
 \backslash
 & Transitions 
 \backslash
-arrow[ld, "
+arrow[ld, swap, "
 \backslash
 mathclap{source}"', sloped] 
 \end_layout
@@ -5363,6 +5363,283 @@ vspace{2em}
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: computational λ-calculus
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Parameterized by:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a set 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ of operations 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ with specified arities
+\end_layout
+
+\begin_layout Itemize
+a monad 
+\begin_inset Formula $T$
+\end_inset
+
+ with operations 
+\begin_inset Formula $T\times\dots\times T\xrightarrow{\sigma^{T}}T$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/syntax-computational-lc.png
+	height 3em
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ a monad 
+\begin_inset Formula $L_{v}$
+\end_inset
+
+ of 
+\series bold
+values
+\series default
+ + a 
+\begin_inset Formula $L_{v}$
+\end_inset
+
+-module of terms
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}[ampersand replacement=
+\backslash
+&, column sep=tiny]
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+& Transitions 
+\backslash
+arrow[ld, "
+\backslash
+mathclap{source}"', swap, sloped] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+arrow[rd, "
+\backslash
+mathclap{target}", sloped] 
+\backslash
+&        
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Terms 
+\backslash
+&                                                        
+\backslash
+& T 
+\backslash
+circ L_v
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\backslash
+textit{Effectful Applicative Bisimilarity: Monads, Relators, and Howe's
+ Method}, Lago-Gavazzo-Levy LICS 2017}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: computational λ-calculus
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Semantics
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/semantics-computational-lc.png
+	height 11em
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\backslash
+textit{Effectful Applicative Bisimilarity: Monads, Relators, and Howe's
+ Method}, Lago-Gavazzo-Levy LICS 2017}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
