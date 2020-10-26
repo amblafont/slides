@@ -216,7 +216,8 @@ In principle, this file can be redistributed and/or modified under the terms
 \end_layout
 
 \begin_layout Title
-Mathematical specifications of programming languages
+Mathematical specification of programming languages using monads and modules
+ over them
 \begin_inset Argument 1
 status open
 
@@ -658,11 +659,10 @@ tikzmark{prop1}
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
+\begin_layout Standard
 In this talk:
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 a tentative notion of programming language, 
 \color blue
@@ -684,7 +684,6 @@ in the untyped case for ease of presentation (simply-typed case works as
  well)
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Note Note
@@ -1096,6 +1095,10 @@ Transition monads!
 
 \end_deeper
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -1107,7 +1110,7 @@ Transition monads!
 status open
 
 \begin_layout Plain Layout
-A difficulty
+A difficulty for syntax
 \end_layout
 
 \end_inset
@@ -1134,7 +1137,7 @@ Bound variables and
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 \begin_inset Formula $\alpha$
@@ -1176,14 +1179,14 @@ should be identified with
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Quotes eld
 \end_inset
@@ -1208,225 +1211,12 @@ should be identified with
 \end_layout
 
 \end_deeper
-\begin_layout AlertBlock
-
-\end_layout
-
 \end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
 \end_inset
 
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Specifying programming languages: 
-\series bold
-initial semantics
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Constructing syntax and reductions may be complex (cf.
-\begin_inset space ~
-\end_inset
-
-differential 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus).
-\end_layout
-
-\begin_layout Itemize
-Often easier to describe the 
-\begin_inset Flex Alert
-status open
-
-\begin_layout Plain Layout
-models
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\align center
-Model 
-\begin_inset Formula $\approx$
-\end_inset
-
- graph with interpretation of the operations and reductions
-\end_layout
-
-\begin_layout ExampleBlock
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-a model of arithmetic expressions: 
-\begin_inset Formula $\mathbb{{Z}}$
-\end_inset
-
- (or rather 
-\begin_inset Formula $\mathbb{Z}[x,y,\dots]$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Syntactic 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $+$
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
- 
-\begin_inset Formula $\qquad\leadsto\qquad$
-\end_inset
-
-actual 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $+$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
- ,
-\end_layout
-
-\begin_layout Itemize
-Syntactic 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $\times$
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
- 
-\begin_inset Formula $\qquad\leadsto\qquad$
-\end_inset
-
-actual 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $\times$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
- , ...
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Programming language 
-\begin_inset Formula $=$
-\end_inset
-
- 
-\begin_inset Flex Alert
-status open
-
-\begin_layout Plain Layout
-initial
-\end_layout
-
-\end_inset
-
- model.
-\end_layout
-
-\begin_layout Itemize
-Initiality 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- 
-\begin_inset Flex Alert
-status open
-
-\begin_layout Plain Layout
-recursion principle
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Block
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-Notion of signature
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Associated notion (category) of models.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Flex Alert
-status open
-
-\begin_layout Plain Layout
-Effective
-\end_layout
-
-\end_inset
-
- iff the initial model (specified object) exists.
-\end_layout
-
-\end_deeper
-\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -5897,7 +5687,7 @@ if
 \end_layout
 
 \begin_layout Section
-Generating transition monads (Initial Semantics)
+Generating transition monads
 \end_layout
 
 \begin_layout Subsection
@@ -5920,9 +5710,9 @@ transition monads
 \end_layout
 
 \begin_layout Frame
-We have a definition of programming languages as 
+programming language = 
 \color blue
-transition monads
+transition monad
 \color inherit
 .
 \end_layout
@@ -5950,17 +5740,23 @@ simple specifications
 
 \end_layout
 
-\begin_layout Frame
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
 
+\begin_layout Plain Layout
+Overview
 \end_layout
 
-\begin_layout Frame
-We provide:
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-a notion of 
+
 \emph on
 simple specification = 
 \series bold
@@ -5971,10 +5767,283 @@ signature
 \end_layout
 
 \begin_layout Itemize
-a theorem ensuring the existence (unique up to iso) of a transition monad
- matching a spec
+existence (unique up to iso) of a transition monad matching a spec
 \end_layout
 
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Under the hood (Initial Semantics)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+To each signature is associated
+\end_layout
+
+\begin_layout Itemize
+a notion of model = transition monad + additional structure
+\end_layout
+
+\begin_layout Itemize
+a notion of morphism of models = compilation preserving additionnal structure
+\end_layout
+
+\begin_layout Itemize
+a proof that the category of models has an initial object
+\end_layout
+
+\begin_layout Plain Layout
+Specified object = initial model.
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Enumerate
+
+\color blue
+\begin_inset Formula ${\color{blue}T}$
+\end_inset
+
+
+\color inherit
+ : monad 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ operations + equations
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $({\color{green}M_{1}},{\color{green}M_{2}})$
+\end_inset
+
+ : 
+\begin_inset Formula $T$
+\end_inset
+
+-modules 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ operations + equations
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $({\color{red}Trans},{\color{red}source},{\color{red}target})$
+\end_inset
+
+ : 
+\begin_inset Quotes eld
+\end_inset
+
+transition structure
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ transition rules such as
+\begin_inset Formula 
+\[
+\frac{t_{1}\rightarrow u_{1}\dots t_{n}\rightarrow u_{n}}{t\rightarrow u}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Hence,
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Specification through 
+\series bold
+initial semantics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Constructing syntax and reductions of a given PL may be complex (cf.
+\begin_inset space ~
+\end_inset
+
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus).
+\end_layout
+
+\begin_layout Itemize
+Often easier to describe the 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+models
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+Model 
+\begin_inset Formula $\approx$
+\end_inset
+
+ transition monad + interpretation of the operations and reductions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Programming language 
+\begin_inset Formula $=$
+\end_inset
+
+ 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+initial
+\end_layout
+
+\end_inset
+
+ model.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Initial Semantics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+To each signature is associated
+\end_layout
+
+\begin_layout Itemize
+a notion of model = transition monad + additional structure
+\end_layout
+
+\begin_layout Itemize
+a notion of morphism of models = compilation preserving additionnal structure
+\end_layout
+
+\begin_layout Itemize
+a proof that the category of models has an initial object = object specified
+ by the signature
+\end_layout
+
+\begin_layout Standard
+Initiality 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+recursion principle
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -6327,92 +6396,6 @@ Transition rules as
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Enumerate
-
-\color blue
-\begin_inset Formula ${\color{blue}T}$
-\end_inset
-
-
-\color inherit
- : monad 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- operations + equations
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $({\color{green}M_{1}},{\color{green}M_{2}})$
-\end_inset
-
- : 
-\begin_inset Formula $T$
-\end_inset
-
--modules 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- operations + equations
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $({\color{red}Trans},{\color{red}source},{\color{red}target})$
-\end_inset
-
- : 
-\begin_inset Quotes eld
-\end_inset
-
-transition structure
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- transition rules such as
-\begin_inset Formula 
-\[
-\frac{t_{1}\rightarrow u_{1}\dots t_{n}\rightarrow u_{n}}{t\rightarrow u}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{1em}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-Hence,
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -6430,10 +6413,6 @@ Three notions of signatures.
 \end_layout
 
 \end_deeper
-\begin_layout Frame
-
-\end_layout
-
 \begin_layout Subsection
 Examples
 \end_layout
@@ -7966,7 +7945,7 @@ vspace{2em}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-M'(X)=M(\tikzmarknode{freshv}{X\amalg\{\diamond\}})
+M'(X)=M(\tikzmarknode{freshv}{X\amalg\{x\}})
 \]
 
 \end_inset
@@ -8014,9 +7993,7 @@ draw[decorate,decoration={brace, amplitude=1.5ex}]
 \begin_layout Plain Layout
 
     (freshv.north west)  --  (freshv.north east) node[ above=.6em]{$X$ extended
- with a fresh variable $
-\backslash
-diamond$};
+ with a fresh variable $x$};
 \end_layout
 
 \begin_layout Plain Layout
@@ -8049,8 +8026,8 @@ used to model an operation binding a variable.
 \begin_inset Formula 
 \[
 \begin{array}{rcl}
-\abs: & L' & \rightarrow L\qquad\left\{ \quad\begin{aligned}\abs_{X}:L(X\amalg\{\diamond\}) & \rightarrow L(X)\\
-t & \mapsto\lambda\diamond.t
+\abs: & L' & \rightarrow L\qquad\left\{ \quad\begin{aligned}\abs_{X}:L(X\amalg\{x\}) & \rightarrow L(X)\\
+t & \mapsto\lambda x.t
 \end{aligned}
 \right.\end{array}
 \]
@@ -9465,15 +9442,7 @@ Signature for
 \begin_deeper
 \begin_layout Standard
 \align center
-variables + 1 binary operation (accounts for 
-\begin_inset Formula $t\,u$
-\end_inset
-
- in 
-\begin_inset Formula $Tms$
-\end_inset
-
-) 
+variables (= labelled leaves) + 1 binary operation (building nodes) 
 \end_layout
 
 \end_deeper
@@ -10121,7 +10090,7 @@ TODO
 \end_layout
 
 \begin_layout Section
-Compilation and initiality
+Generating compilations by initiality
 \end_layout
 
 \begin_layout Standard
@@ -10839,6 +10808,19 @@ Example 1/2: compiling
 \end_layout
 
 \begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 \underbrace{L_{\fix}}_{\text{specified by \ensuremath{"\Sigma_{L}+\Sigma_{\fix}"}}}\longrightarrow\qquad\underbrace{L}_{\text{specified by \ensuremath{\Sigma_{L}}}}\text{ (\ensuremath{\lambda}-calculus)}
@@ -10878,28 +10860,38 @@ an operation
 
 \begin_layout Itemize
 reductions 
-\begin_inset Formula $\text{\framebox[][]{\fix(t)\rightarrow t[x\mapsto\fix(t)]}}$
+\begin_inset Formula $\fix(t)\ensuremath{\rightarrow t[\underbrace{x}_{\mathclap{\text{the fresh variable}}}\mapsto\fix(t)]}$
 \end_inset
 
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\;(t\in T'(X)=T(X\amalg\{x\})$
 \end_inset
 
 )
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \end_deeper
 \begin_layout Frame
 
 \end_layout
 
-\begin_layout Frame
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
 
-\series bold
-Needed
-\series default
-: a model structure on 
+\begin_layout Plain Layout
+Model structure on 
 \begin_inset Formula $L$
 \end_inset
 
@@ -10907,11 +10899,20 @@ Needed
 \begin_inset Formula $\Sigma_{\fix}$
 \end_inset
 
- (already has the 
-\begin_inset Formula $\Sigma_{L}$
+ (
+\begin_inset Formula $\Rightarrow$
 \end_inset
 
--part)
+ compilation 
+\begin_inset Formula $L_{\fix}\rightarrow L$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10922,7 +10923,7 @@ choose a fixpoint combinator: a term
 
  s.t.
  
-\begin_inset Formula $Yu\rightarrow_{\beta}^{*}u(Yu)$
+\begin_inset Formula $Y\ u\rightarrow_{\beta}^{*}u\ (Y\ u)$
 \end_inset
 
 
@@ -10944,6 +10945,7 @@ define
 
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -11070,29 +11072,54 @@ an operation
 \end_inset
 
  + congruences +
-\end_layout
+\begin_inset Formula 
+\begin{align}
+t[x/u][y/v]\rightarrow t[y/v][x/u[y/v]] & \;\;\text{{\color{green}\ensuremath{x\notin fv(v)}}, {\color{red}\ensuremath{y\in fv(u)}}}\label{eq:ex-red}
+\end{align}
 
-\begin_layout Standard
-\align center
-\begin_inset Formula $\text{\framebox[][]{t[x/u][y/v]\ensuremath{\rightarrow}t[y/v][x/u[y/v]]}}\quad\text{if {\color{green}\ensuremath{x\notin fv(u)}}, {\color{red}\ensuremath{y\in fv(u)}}}$
 \end_inset
 
- 
+
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Frame
 
-\series bold
-Needed
-\series default
-: a model structure on 
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Model structure on 
 \begin_inset Formula $L$
 \end_inset
 
  for 
 \begin_inset Formula $\Sigma_{ex}$
+\end_inset
+
+ (
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ compilation 
+\begin_inset Formula $L_{ex}\rightarrow L$
+\end_inset
+
+)
+\end_layout
+
 \end_inset
 
 
@@ -11101,7 +11128,7 @@ Needed
 \begin_deeper
 \begin_layout Itemize
 use the real susbtitution 
-\begin_inset Formula $T'\times T\xrightarrow{(t,u)\mapsto t[x\mapsto u]}T$
+\begin_inset Formula $T'\times T\xrightarrow{(t,u)\mapsto t[x:=u]}T$
 \end_inset
 
 
@@ -11111,20 +11138,20 @@ use the real susbtitution
 \begin_inset Formula $\beta$
 \end_inset
 
--reduction + congruences + reflexive reduction
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-t[x\mapsto u][y\mapsto v]\stackrel{=}{\rightarrow}t[y\mapsto v][x\mapsto u[y\mapsto v]]
-\]
+-reduction + congruences + reflexive reduction 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ex-red"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
 
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Section*
 Conclusion
