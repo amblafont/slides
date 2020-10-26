@@ -5610,6 +5610,80 @@ Semantics
 \end_layout
 
 \begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}[ampersand replacement=
+\backslash
+&, column sep=tiny]
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+& Transitions 
+\backslash
+arrow[ld, "
+\backslash
+mathclap{source}"', swap, sloped] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+arrow[rd, "
+\backslash
+mathclap{target}", sloped] 
+\backslash
+&        
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Terms 
+\backslash
+&                                                        
+\backslash
+& T 
+\backslash
+circ L_v
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \align center
 \begin_inset Graphics
 	filename images/semantics-computational-lc.png
@@ -11430,7 +11504,7 @@ noprefix "false"
 
 \end_deeper
 \end_deeper
-\begin_layout Section*
+\begin_layout Section
 Conclusion
 \end_layout
 
@@ -11547,10 +11621,6 @@ effective
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-Effectful transitions?
-\end_layout
-
 \end_deeper
 \begin_layout Frame
 \begin_inset Note Note
