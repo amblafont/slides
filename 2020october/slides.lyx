@@ -1215,9 +1215,207 @@ should be identified with
 \end_inset
 
 
+\begin_inset Separator plain
+\end_inset
+
+
 \end_layout
 
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Related work
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
+
+\emph on
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+
+\emph on
+Reduction monads
+\emph default
+ of Ahrens et al.
+ (POPL 2020)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+textcolor{red}{
+\backslash
+times}$]
+\end_layout
+
+\end_inset
+
+untyped
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+textcolor{red}{
+\backslash
+times}$]
+\end_layout
+
+\end_inset
+
+cbv 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus out of reach
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$-$]
+\end_layout
+
+\end_inset
+
+
+\series bold
+this contribution
+\series default
+\emph on
+ 
+\emph default
+= a generalisation of
+\emph on
+ reduction monads
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Mathematical Operational Semantics
+\emph default
+ (Turi-Plotkin '97)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$-$]
+\end_layout
+
+\end_inset
+
+Deeply developed
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+textcolor{red}{
+\backslash
+times}$]
+\end_layout
+
+\end_inset
+
+Higher-order languages (such as 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus) only starting to be investigated (Peressoti '17)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Rewriting with variable binding (categorical approach) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$-$]
+\end_layout
+
+\end_inset
+
+e.g.
+ Hamana 2003, T.
+ Hirschowitz 2013, Ahrens 2016
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+textcolor{red}{
+\backslash
+times}$]
+\end_layout
+
+\end_inset
+
+only congruent transitions 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ weak reduction out of reach
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -1238,7 +1436,7 @@ Related work: syntax
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 Two main notions of syntax:
 \end_layout
 
@@ -1290,7 +1488,7 @@ vspace{1em}
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Preview
 
 \begin_layout Standard
@@ -1314,7 +1512,7 @@ This approach: monads
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -1335,7 +1533,7 @@ Related work: specifying syntax
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 Main notions of signature for monads:
 \end_layout
 
@@ -1383,7 +1581,7 @@ This approach: modules
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -1404,7 +1602,7 @@ Related work: semantics
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 Semantic notions of programming language:
 \end_layout
 
@@ -1470,7 +1668,7 @@ où t et u sont des opérations,
 
 \end_inset
 
- 
+
 \end_layout
 
 \end_inset
@@ -1478,7 +1676,7 @@ où t et u sont des opérations,
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Do not cover 
 \begin_inset Flex Alert
 status open
@@ -1518,7 +1716,7 @@ relative monads
  [Ahrens, 2016].
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Only covers 
 \begin_inset Flex Alert
 status open
@@ -1533,6 +1731,11 @@ congruent
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -11580,7 +11783,23 @@ A cellular Howe's theorem
 
 , LICS'20 with T.
  Hirschowitz and P.
- Borthelle, in a simpler setting.
+ Borthelle, in a different setting.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Effectful Applicative Bisimilarity: Monads, Relators, and Howe's Method
+\begin_inset Quotes erd
+\end_inset
+
+, Lago-Gavazzo-Levy LICS 2017, for particular cases of transition monads
+ (computational 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus).
 \end_layout
 
 \end_deeper
