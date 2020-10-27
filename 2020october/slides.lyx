@@ -2214,602 +2214,6 @@ Reductions:
 \end_layout
 
 \begin_layout Subsection
-Graphs
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-PLs as graphs
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout FrameSubtitle
-Example: 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus with 
-\begin_inset Formula $\beta$
-\end_inset
-
--reduction
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "../../these-slides/images/multigraphe.tex"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-1em}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Columns
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Column
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-dimexpr
-\backslash
-paperwidth-35pt
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-pour réduire la marge
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-(
-\series bold
-Syntax
-\series default
-) vertices = terms e.g.
- 
-\begin_inset Formula $\Omega=(\lambda x.x\,x)\,(\lambda x.x\,x)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-(
-\series bold
-Semantics
-\series default
-) arrows = reductions
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
- (dedicated syntax: Cf labels)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Graphs
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout FrameSubtitle
-Definition
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\backslash
-{
-\backslash
-text{edges}
-\backslash
-}
-\backslash
-ar@<+0.5ex>[r]^{
-\backslash
-text{source}}
-\backslash
-ar@<-0.5ex>[r]_{
-\backslash
-text{target}}&
-\backslash
-{
-\backslash
-text{vertices
-\backslash
-}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-Graph = a quadruple 
-\begin_inset Formula $(A,V,\sigma,\tau)$
-\end_inset
-
- where 
-\begin_inset Formula 
-\begin{align*}
-A & =\{\text{arrows}\} & \sigma & =\text{source of an arrow}\\
-V & =\{\text{vertices\}} & \tau & =\text{target of an arrow}
-\end{align*}
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\xymatrix{A\ar@<+.5ex>[r]^{\sigma}\ar@<-0.5ex>[r]_{\tau} & V}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{align*}
-A & =\{\text{arrows}\}\\
-V & =\{\text{vertices}\}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Formula 
-\[
-\begin{array}{rcl}
-\sigma: & {\color{blue}A} & \to V\\
- & {\color{blue}t\xrightarrow{r}u} & \mapsto t
-\end{array}\qquad\begin{array}{rcl}
-\tau: & {\color{blue}A} & \to V\\
- & {\color{blue}t\xrightarrow{r}u} & \mapsto u
-\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Formula 
-\[
-\sigma(r)\xrightarrow{r}\tau(r)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\[
-\partial^{-1}(\{(t,u)\})=\{\text{arrows between \ensuremath{t} and \ensuremath{u}}\}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-PLs as bipartite graphs
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout FrameSubtitle
-Example: 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus cbv with big-step operational semantics
-\end_layout
-
-\begin_layout Itemize
-term 
-\begin_inset Formula $\rightarrow$
-\end_inset
-
- value
-\end_layout
-
-\begin_layout Itemize
-variables = placeholders for values
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-bigskip
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "../../these-slides/images/bipartite-graph.tex"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Bipartite graphs
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout FrameSubtitle
-Definition
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\backslash
-{
-\backslash
-text{edges}
-\backslash
-}
-\backslash
-ar@<+0.5ex>[r]^{
-\backslash
-text{source}}
-\backslash
-ar@<-0.5ex>[r]_{
-\backslash
-text{target}}&
-\backslash
-{
-\backslash
-text{vertices
-\backslash
-}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-Bipartite graph = a quadruple 
-\begin_inset Formula $(A,V_{1},V_{2},\partial)$
-\end_inset
-
- where 
-\begin_inset Formula 
-\[
-V_{1}\xleftarrow{\sigma}A\xrightarrow{\tau}V_{2}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Formula 
-\[
-A=\{\text{arrows}\}\qquad\qquad\begin{aligned}V_{1} & =\{\text{vertices in first group}\}\\
-V_{2} & =\{\text{vertices in second group}\}
-\end{aligned}
-\]
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{align*}
-A & =\{\text{arrows}\}\\
-V_{1} & =\{\text{vertices in first group}\}\\
-V_{2} & =\{\text{vertices in second group}\}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{1em}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\[
-\begin{array}{rcl}
-\partial: & {\color{blue}A} & \to V\times V\\
- & {\color{blue}t\to u} & \mapsto(t,u)
-\end{array}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-For simplicity, we focus on the particular case of 
-\series bold
-graphs
-\series default
-: 
-\begin_inset Formula $V_{1}=V_{2}$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
 Substitution
 \end_layout
 
@@ -2845,7 +2249,6 @@ status open
 \begin_layout Plain Layout
 A title should summarize the slide in an understandable fashion for anyone
  how does not follow everything on the slide itself.
- 
 \end_layout
 
 \end_inset
@@ -2890,12 +2293,7 @@ pour réduire la marge
 \end_layout
 
 \begin_layout Standard
-terms (e.g.
- 
-\begin_inset Formula $\lambda$
-\end_inset
-
--terms) = trees with free variables as (distinguished) leaves.
+terms as syntactic derivation trees (free variables as distinguished leaves).
 \end_layout
 
 \end_deeper
@@ -2967,7 +2365,6 @@ status open
 \begin_layout Plain Layout
 A title should summarize the slide in an understandable fashion for anyone
  how does not follow everything on the slide itself.
- 
 \end_layout
 
 \end_inset
@@ -3024,7 +2421,7 @@ Free variables indexing
 
 \begin_inset Formula 
 \[
-X\mapsto\{\text{terms taking free variables in \ensuremath{X}}\}
+L(X)=\{\text{terms taking free variables in \ensuremath{X}}\}
 \]
 
 \end_inset
@@ -3535,6 +2932,602 @@ ne pas expliquer cette dernière règle
 
 \end_layout
 
+\begin_layout Subsection
+Graphs
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+PLs as graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Example: 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus with 
+\begin_inset Formula $\beta$
+\end_inset
+
+-reduction
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/multigraphe.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Columns
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+dimexpr
+\backslash
+paperwidth-35pt
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+pour réduire la marge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(
+\series bold
+Syntax
+\series default
+) vertices = terms e.g.
+ 
+\begin_inset Formula $\Omega=(\lambda x.x\,x)\,(\lambda x.x\,x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+(
+\series bold
+Semantics
+\series default
+) arrows = reductions
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ (dedicated syntax: Cf labels)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Definition
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\backslash
+{
+\backslash
+text{edges}
+\backslash
+}
+\backslash
+ar@<+0.5ex>[r]^{
+\backslash
+text{source}}
+\backslash
+ar@<-0.5ex>[r]_{
+\backslash
+text{target}}&
+\backslash
+{
+\backslash
+text{vertices
+\backslash
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Graph = a quadruple 
+\begin_inset Formula $(A,V,\sigma,\tau)$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\begin{align*}
+A & =\{\text{arrows}\}\\
+V & =\{\text{vertices\}}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\xymatrix{A\ar@<+.5ex>[r]^{source}\ar@<-0.5ex>[r]_{target} & V}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+A & =\{\text{arrows}\}\\
+V & =\{\text{vertices}\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\sigma: & {\color{blue}A} & \to V\\
+ & {\color{blue}t\xrightarrow{r}u} & \mapsto t
+\end{array}\qquad\begin{array}{rcl}
+\tau: & {\color{blue}A} & \to V\\
+ & {\color{blue}t\xrightarrow{r}u} & \mapsto u
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\sigma(r)\xrightarrow{r}\tau(r)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\partial^{-1}(\{(t,u)\})=\{\text{arrows between \ensuremath{t} and \ensuremath{u}}\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+PLs as bipartite graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Example: 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus cbv with big-step operational semantics
+\end_layout
+
+\begin_layout Itemize
+term 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ value
+\end_layout
+
+\begin_layout Itemize
+variables = placeholders for values
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/bipartite-graph.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bipartite graphs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Definition
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\backslash
+{
+\backslash
+text{edges}
+\backslash
+}
+\backslash
+ar@<+0.5ex>[r]^{
+\backslash
+text{source}}
+\backslash
+ar@<-0.5ex>[r]_{
+\backslash
+text{target}}&
+\backslash
+{
+\backslash
+text{vertices
+\backslash
+}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Bipartite graph = a quadruple 
+\begin_inset Formula $(A,V_{1},V_{2},\partial)$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\[
+V_{1}\xleftarrow{\sigma}A\xrightarrow{\tau}V_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+A=\{\text{arrows}\}\qquad\qquad\begin{aligned}V_{1} & =\{\text{vertices in first group}\}\\
+V_{2} & =\{\text{vertices in second group}\}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+A & =\{\text{arrows}\}\\
+V_{1} & =\{\text{vertices in first group}\}\\
+V_{2} & =\{\text{vertices in second group}\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\begin{array}{rcl}
+\partial: & {\color{blue}A} & \to V\times V\\
+ & {\color{blue}t\to u} & \mapsto(t,u)
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+For simplicity, we focus on the particular case of 
+\series bold
+graphs
+\series default
+: 
+\begin_inset Formula $V_{1}=V_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Frame
 \begin_inset Argument 4
 status open
@@ -3632,7 +3625,7 @@ Semantics
 \begin_deeper
 \begin_layout Itemize
 graphs 
-\begin_inset Formula $\xymatrix{R(X)\ar@<+.5ex>[r]^{\sigma_{X}}\ar@<-0.5ex>[r]_{\tau_{X}} & L(X)}
+\begin_inset Formula $\xymatrix{R(X)\ar@<+.5ex>[r]^{source_{X}}\ar@<-0.5ex>[r]_{target_{X}} & L(X)}
 $
 \end_inset
 
@@ -3673,7 +3666,7 @@ substitution of reduction: variables
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\dfrac{\redr rtu}{\redr{r\monsubst f}{t\monsubst f}{u\monsubst f}}
+\dfrac{\redr rtu}{\redr{r\monsubst f}{t\monsubst f}{u\monsubst f}}\qquad f:X\rightarrow L(Y)
 \]
 
 \end_inset
@@ -3683,7 +3676,16 @@ substitution of reduction: variables
 
 \end_deeper
 \begin_layout Itemize
-\begin_inset Formula $\Rightarrow$
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+Rightarrow$]
+\end_layout
+
 \end_inset
 
  
@@ -3695,11 +3697,11 @@ substitution of reduction: variables
 \end_inset
 
 -module, and 
-\begin_inset Formula $\sigma$
+\begin_inset Formula $source$
 \end_inset
 
-,
-\begin_inset Formula $\tau$
+, 
+\begin_inset Formula $target$
 \end_inset
 
  are module morphisms (see next slide)
@@ -5131,7 +5133,7 @@ a monad
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="1">
+<lyxtabular version="3" rows="3" columns="1">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <row>
@@ -5157,6 +5159,17 @@ a monad
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(bipartite graph)
 \end_layout
 
 \end_inset
@@ -5217,7 +5230,7 @@ a monad
 \begin_inset Formula $T\xleftarrow{source}Trans\xrightarrow{target}T$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -5293,7 +5306,11 @@ Examples:
 \begin_inset Text
 
 \begin_layout Plain Layout
-GSOS specs
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
 \end_layout
 
 \end_inset
@@ -5336,11 +5353,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-differential 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus
+GSOS specs
 \end_layout
 
 \end_inset
@@ -5349,6 +5362,31 @@ differential
 \begin_inset Text
 
 \begin_layout Plain Layout
+computational 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\begin_inset Quotes eld
+\end_inset
+
+Effectful Applicative Bisimilarity: Monads, Relators, and Howe's Method
+\begin_inset Quotes erd
+\end_inset
+
+, Lago-Gavazzo-Levy LICS 2017}
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -5566,357 +5604,6 @@ vspace{2em}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Example: computational λ-calculus
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotemark{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-Parameterized by:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-a set 
-\begin_inset Formula $\Sigma$
-\end_inset
-
- of operations 
-\begin_inset Formula $\sigma$
-\end_inset
-
- with specified arities
-\end_layout
-
-\begin_layout Itemize
-a monad 
-\begin_inset Formula $T$
-\end_inset
-
- with operations 
-\begin_inset Formula $T\times\dots\times T\xrightarrow{\sigma^{T}}T$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename images/syntax-computational-lc.png
-	height 3em
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- a monad 
-\begin_inset Formula $L_{v}$
-\end_inset
-
- of 
-\series bold
-values
-\series default
- + a 
-\begin_inset Formula $L_{v}$
-\end_inset
-
--module of terms
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-[
-\backslash
-begin{tikzcd}[ampersand replacement=
-\backslash
-&, column sep=tiny]
-\end_layout
-
-\begin_layout Plain Layout
-
-      
-\backslash
-& Transitions 
-\backslash
-arrow[ld, "
-\backslash
-mathclap{source}"', swap, sloped] 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-arrow[rd, "
-\backslash
-mathclap{target}", sloped] 
-\backslash
-&        
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Terms 
-\backslash
-&                                                        
-\backslash
-& T 
-\backslash
-circ L_v
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tikzcd}
-\backslash
-]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_layout Frame
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotetext{
-\backslash
-textit{Effectful Applicative Bisimilarity: Monads, Relators, and Howe's
- Method}, Lago-Gavazzo-Levy LICS 2017}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Example: computational λ-calculus
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotemark{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout FrameSubtitle
-Semantics
-\end_layout
-
-\begin_layout Standard
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-[
-\backslash
-begin{tikzcd}[ampersand replacement=
-\backslash
-&, column sep=tiny]
-\end_layout
-
-\begin_layout Plain Layout
-
-      
-\backslash
-& Transitions 
-\backslash
-arrow[ld, "
-\backslash
-mathclap{source}"', swap, sloped] 
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-arrow[rd, "
-\backslash
-mathclap{target}", sloped] 
-\backslash
-&        
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Terms 
-\backslash
-&                                                        
-\backslash
-& T 
-\backslash
-circ L_v
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tikzcd}
-\backslash
-]
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename images/semantics-computational-lc.png
-	height 11em
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotetext{
-\backslash
-textit{Effectful Applicative Bisimilarity: Monads, Relators, and Howe's
- Method}, Lago-Gavazzo-Levy LICS 2017}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -12009,7 +11696,357 @@ Lafont
 \end_layout
 
 \begin_layout Standard
-\start_of_appendix
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: computational λ-calculus
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Parameterized by:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a set 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ of operations 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ with specified arities
+\end_layout
+
+\begin_layout Itemize
+a monad 
+\begin_inset Formula $T$
+\end_inset
+
+ with operations 
+\begin_inset Formula $T\times\dots\times T\xrightarrow{\sigma^{T}}T$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/syntax-computational-lc.png
+	height 3em
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ a monad 
+\begin_inset Formula $L_{v}$
+\end_inset
+
+ of 
+\series bold
+values
+\series default
+ + a 
+\begin_inset Formula $L_{v}$
+\end_inset
+
+-module of terms
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}[ampersand replacement=
+\backslash
+&, column sep=tiny]
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+& Transitions 
+\backslash
+arrow[ld, "
+\backslash
+mathclap{source}"', swap, sloped] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+arrow[rd, "
+\backslash
+mathclap{target}", sloped] 
+\backslash
+&        
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Terms 
+\backslash
+&                                                        
+\backslash
+& T 
+\backslash
+circ L_v
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\backslash
+textit{Effectful Applicative Bisimilarity: Monads, Relators, and Howe's
+ Method}, Lago-Gavazzo-Levy LICS 2017}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: computational λ-calculus
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Semantics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\backslash
+begin{tikzcd}[ampersand replacement=
+\backslash
+&, column sep=tiny]
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+& Transitions 
+\backslash
+arrow[ld, "
+\backslash
+mathclap{source}"', swap, sloped] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+arrow[rd, "
+\backslash
+mathclap{target}", sloped] 
+\backslash
+&        
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Terms 
+\backslash
+&                                                        
+\backslash
+& T 
+\backslash
+circ L_v
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/semantics-computational-lc.png
+	height 11em
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\backslash
+textit{Effectful Applicative Bisimilarity: Monads, Relators, and Howe's
+ Method}, Lago-Gavazzo-Levy LICS 2017}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
