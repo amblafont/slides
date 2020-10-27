@@ -85,6 +85,15 @@ anchor=base west,
 \regtotcounter{exemples}
 \newcommand\newexemple{\stepcounter{exemples}
 \theexemples/\total{exemples}}
+
+% backup slides
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
 \end_preamble
 \use_default_options true
 \maintain_unincluded_children false
@@ -552,6 +561,13 @@ filename "../../these-slides/lyxymatrix.lyx"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Frame
 \begin_inset Argument 4
 status open
@@ -659,12 +675,22 @@ tikzmark{prop1}
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-In this talk:
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Contributions presented in this talk
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
-a tentative notion of programming language, 
+a notion of programming language, 
 \color blue
 transition monads
 \color inherit
@@ -676,14 +702,442 @@ a discipline for
 \color blue
 automatically generating 
 \color inherit
-well-behaved transition monads.
+them.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Features of this approach
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+monads and modules to take care of substitution.
 \end_layout
 
 \begin_layout Itemize
-in the untyped case for ease of presentation (simply-typed case works as
- well)
+works with simple types (in this talk: untyped case)
 \end_layout
 
+\end_deeper
+\begin_layout Block
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Related work
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Reduction monads
+\emph default
+ of (POPL'20 with B.
+ Ahrens, A.
+ Hirschowitz, M.
+ Maggesi)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+textcolor{red}{
+\backslash
+times}$]
+\end_layout
+
+\end_inset
+
+cbv 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus out of reach
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$-$]
+\end_layout
+
+\end_inset
+
+
+\series bold
+transition monads
+\series default
+ = a generalisation of
+\emph on
+ reduction monads
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\emph on
+Mathematical Operational Semantics
+\emph default
+ (Turi-Plotkin '97)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$-$]
+\end_layout
+
+\end_inset
+
+Deeply developed
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+textcolor{red}{
+\backslash
+times}$]
+\end_layout
+
+\end_inset
+
+Higher-order languages (such as 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus) only starting to be investigated (Peressoti '17)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Rewriting with variable binding (categorical approach) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$-$]
+\end_layout
+
+\end_inset
+
+e.g.
+ Hamana 2003, T.
+ Hirschowitz 2013, Ahrens 2016
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+textcolor{red}{
+\backslash
+times}$]
+\end_layout
+
+\end_inset
+
+only congruent transitions 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ weak reduction out of reach
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Examples of transition monads
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\overline{\lambda}\mu$
+\end_inset
+
+-calculus
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\pi$
+\end_inset
+
+-calculus
+\end_layout
+
+\begin_layout Itemize
+differential 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\end_layout
+
+\begin_layout Itemize
+cbv 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus (big/small-step)
+\end_layout
+
+\begin_layout Itemize
+computational 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnote{
+\begin_inset Quotes eld
+\end_inset
+
+Effectful Applicative Bisimilarity: Monads, Relators, and Howe's Method
+\begin_inset Quotes erd
+\end_inset
+
+, Lago-Gavazzo-Levy LICS 2017}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+GSOS specs
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Perspectives and interests
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Abstracting well-known methods, e.g.
+ Howe's method
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+A cellular Howe's theorem
+\begin_inset Quotes erd
+\end_inset
+
+, LICS'20 with T.
+ Hirschowitz and P.
+ Borthelle, in a different setting.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Effectful Applicative Bisimilarity: Monads, Relators, and Howe's Method
+\begin_inset Quotes erd
+\end_inset
+
+, Lago-Gavazzo-Levy LICS 2017, for particular cases of transition monads
+ (computational 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus).
+\end_layout
+
+\begin_layout Itemize
+can we generalize both approaches?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Compilations (as morphisms of transition monads)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+explore different variants (different correctness criteria).
+\end_layout
+
+\begin_layout Itemize
+try 
+\begin_inset Quotes eld
+\end_inset
+
+academic
+\begin_inset Quotes erd
+\end_inset
+
+ examples, e.g, Plotkin's CPS translations of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+effective
+\begin_inset Quotes erd
+\end_inset
+
+ Coq formalization (theory already formalized using UniMath for the syntax)
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Note Note
@@ -843,258 +1297,6 @@ Operational semantics
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-What is a programming language?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-2 components:
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Syntax
-\series default
-: formal language for writing programs;
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Operational semantics
-\series default
-: how do programs 
-\emph on
-execute
-\emph default
-.
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\emph on
-Execution 
-\emph default
-= modification of the program:
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Graphics
-	filename ../../these-slides/images/calculatrice-exec-2.png
-	width 50text%
-	BoundingBox 2bp 2bp 327bp 260bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "../../these-slides/images/calculatrice.tex"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align left
-
-\series bold
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\align left
-
-\series bold
-Operational semantics 
-\series default
-= description of how programs execute.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-What is a programming language?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout FrameSubtitle
-A graph whose vertices are programs.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Preview
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "../../these-slides/images/multigraphe-arith.tex"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-1.5em}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-mettre des expressions arithmétiques plutôt que des lambda-termes
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Block
-\begin_inset Argument 2
-status open
-
-\begin_layout Plain Layout
-Variables = placeholders for expressions
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Substitution: 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $(x+y)[x:=5,y:=4]=5+4$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $(x+(5+4))[x:=12]=12+(5+4)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Reductions are stable under substitution
-\begin_inset Formula 
-\[
-\frac{{\color{red}x}+(5+4)\to\ensuremath{{\color{red}x}+9}}{{\color{red}12}+(5+4)\to{\color{red}12}+9}\,\cdot
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Formula $\leadsto$
-\end_inset
-
- 
-\begin_inset Flex Alert
-status open
-
-\begin_layout Plain Layout
-Transition monads!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -1215,202 +1417,8 @@ should be identified with
 \end_inset
 
 
-\begin_inset Separator plain
-\end_inset
-
-
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Related work
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\emph on
-\begin_inset Note Note
-status open
-
-\begin_layout Itemize
-
-\emph on
-Reduction monads
-\emph default
- of Ahrens et al.
- (POPL 2020)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[$
-\backslash
-textcolor{red}{
-\backslash
-times}$]
-\end_layout
-
-\end_inset
-
-untyped
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[$
-\backslash
-textcolor{red}{
-\backslash
-times}$]
-\end_layout
-
-\end_inset
-
-cbv 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus out of reach
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[$-$]
-\end_layout
-
-\end_inset
-
-
-\series bold
-this contribution
-\series default
-\emph on
- 
-\emph default
-= a generalisation of
-\emph on
- reduction monads
-\end_layout
-
-\end_deeper
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Mathematical Operational Semantics
-\emph default
- (Turi-Plotkin '97)
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[$-$]
-\end_layout
-
-\end_inset
-
-Deeply developed
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[$
-\backslash
-textcolor{red}{
-\backslash
-times}$]
-\end_layout
-
-\end_inset
-
-Higher-order languages (such as 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus) only starting to be investigated (Peressoti '17)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Rewriting with variable binding (categorical approach) 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[$-$]
-\end_layout
-
-\end_inset
-
-e.g.
- Hamana 2003, T.
- Hirschowitz 2013, Ahrens 2016
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[$
-\backslash
-textcolor{red}{
-\backslash
-times}$]
-\end_layout
-
-\end_inset
-
-only congruent transitions 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- weak reduction out of reach
-\end_layout
-
-\end_deeper
-\end_deeper
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -1737,170 +1745,6 @@ congruent
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-In this talk
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Mathematical definition of programming languages as 
-\series bold
-transition monads
-\series default
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-, generalising 
-\series bold
-reduction monads
-\series default
- (POPL'20 with B.
- Ahrens, A.
- Hirschowitz, M.
- Maggesi).
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Signatures for specifying them
-\end_layout
-
-\begin_layout Itemize
-Systematic use of monads and modules for taking care of substitution.
-\end_layout
-
-\end_deeper
-\begin_layout Frame
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-All in collaboration with Benedikt Ahrens, André Hirschowitz and Marco Maggesi.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-AHLM = B.
- Ahrens, A.
- Hirschowitz, 
-\series bold
-A.
- Lafont
-\series default
-, M.
- Maggesi
-\end_layout
-
-\begin_layout Plain Layout
-HHL = A.
- Hirschowitz, T.
- Hirschowitz, 
-\series bold
-A.
- Lafont
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\align center
-"Reduction monads and their signatures
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-HHL (on HAL): extension to bipartite graphs and simply typed PLs
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\align center
-"Modules over monads and operational semantics
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\align center
-What is initial semantics?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -2078,6 +1922,258 @@ If you omit details that are vital to the proof/implementation, just say
 Transition monads
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a programming language?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+2 components:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Syntax
+\series default
+: formal language for writing programs;
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Operational semantics
+\series default
+: how do programs 
+\emph on
+execute
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Execution 
+\emph default
+= modification of the program:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../these-slides/images/calculatrice-exec-2.png
+	width 50text%
+	BoundingBox 2bp 2bp 327bp 260bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/calculatrice.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align left
+
+\series bold
+Operational semantics 
+\series default
+= description of how programs execute.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a programming language?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+A graph whose vertices are programs.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../these-slides/images/multigraphe-arith.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1.5em}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+mettre des expressions arithmétiques plutôt que des lambda-termes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Variables = placeholders for expressions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Substitution: 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $(x+y)[x:=5,y:=4]=5+4$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $(x+(5+4))[x:=12]=12+(5+4)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Reductions are stable under substitution
+\begin_inset Formula 
+\[
+\frac{{\color{red}x}+(5+4)\to\ensuremath{{\color{red}x}+9}}{{\color{red}12}+(5+4)\to{\color{red}12}+9}\,\cdot
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Formula $\leadsto$
+\end_inset
+
+ 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Transition monads!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -4790,143 +4886,6 @@ Simply-typed case: base category =
 \end_layout
 
 \begin_layout Frame
-Examples:
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\overline{\lambda}\mu$
-\end_inset
-
--calculus
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $\pi$
-\end_inset
-
--calculus
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-differential 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-cbv 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(big/small-step).
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-GSOS specs
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-computational 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnote{
-\begin_inset Quotes eld
-\end_inset
-
-Effectful Applicative Bisimilarity: Monads, Relators, and Howe's Method
-\begin_inset Quotes erd
-\end_inset
-
-, Lago-Gavazzo-Levy LICS 2017}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
 
 \end_layout
 
@@ -5321,7 +5280,7 @@ footnote{backward simulations are often considered as a correctness criteria}
 status open
 
 \begin_layout Plain Layout
-Examples (POPL'20, detailed later)
+Examples (detailed later)
 \end_layout
 
 \end_inset
@@ -10457,7 +10416,7 @@ as a model morphism, the induced compilation satisfies recursive equations.
 status open
 
 \begin_layout Plain Layout
-Upcoming examples (POPL'20)
+Upcoming examples
 \end_layout
 
 \end_inset
@@ -10952,7 +10911,7 @@ Conclusion
 status open
 
 \begin_layout Plain Layout
-Perspectives
+Conclusion
 \end_layout
 
 \end_inset
@@ -11002,6 +10961,63 @@ Main theorems regarding syntax: formalized within the Coq UniMath library
 
 
 \end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+PLs as transition monads
+\end_layout
+
+\begin_layout Itemize
+Signatures for transition monads
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Perspectives
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+replay well-known methods (e.g., Howe's method) in this setting
+\end_layout
+
+\begin_layout Itemize
+explore different notion of compilations in this setting
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
 \begin_layout Itemize
 Generalise well-known theorems, e.g.
@@ -11076,6 +11092,11 @@ effective
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Frame
 \begin_inset Note Note
@@ -11246,6 +11267,22 @@ Lafont
 
 \begin_layout Standard
 \begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+backupbegin
+\end_layout
+
 \end_inset
 
 
@@ -11595,6 +11632,22 @@ textit{Effectful Applicative Bisimilarity: Monads, Relators, and Howe's
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+backupend
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
