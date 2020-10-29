@@ -586,10 +586,6 @@ That is the question
 What is a programming language, mathematically?
 \end_layout
 
-\begin_layout Itemize
-In the literature, no well-established consensus.
-\end_layout
-
 \begin_layout ExampleBlock
 \begin_inset Argument 2
 status open
@@ -599,7 +595,7 @@ Differential
 \begin_inset Formula $\lambda$
 \end_inset
 
--calculus [Ehrhard-Regnier 2003]
+-calculus [Ehrhard-Regnier '03]
 \end_layout
 
 \end_inset
@@ -694,7 +690,11 @@ a notion of programming language,
 \color blue
 transition monads
 \color inherit
- (FSCD 2020, with Tom and Andre Hirschowitz), and
+ [Hirschowitz-Hirschowitz-
+\bar under
+Lafont
+\bar default
+ '20], and
 \end_layout
 
 \begin_layout Itemize
@@ -745,10 +745,6 @@ works with simple types (in this talk: untyped case)
 
 \end_layout
 
-\begin_layout Frame
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -770,15 +766,92 @@ Related work
 \end_layout
 
 \begin_deeper
+\begin_layout FrameSubtitle
+Syntax with variable binding
+\end_layout
+
+\begin_layout Standard
+Two main notions of syntax:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Nominal sets
+\end_layout
+
+\end_inset
+
+ [Gabbay-Pitts '99].
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Injective renamings built-in.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+Substitution monoids
+\end_layout
+
+\end_inset
+
+ [Fiore-Plotkin-Turi '99].
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Parallel substitution built-in.
+\end_layout
+
+\begin_layout Itemize
+Transition monads (syntax): a variant of this approach 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Related work
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Notion of programming language and specification
+\end_layout
+
 \begin_layout Itemize
 
 \emph on
 Reduction monads
 \emph default
- of (POPL'20 with B.
- Ahrens, A.
- Hirschowitz, M.
- Maggesi)
+ [Ahrens-Hirschowitz-
+\bar under
+Lafont
+\bar default
+-Maggesi '20]
 \end_layout
 
 \begin_deeper
@@ -790,9 +863,7 @@ status open
 
 [$
 \backslash
-textcolor{red}{
-\backslash
-times}$]
+textcolor{red}{-}$]
 \end_layout
 
 \end_inset
@@ -810,7 +881,9 @@ status open
 
 \begin_layout Plain Layout
 
-[$-$]
+[$
+\backslash
+textcolor{green}{+}$]
 \end_layout
 
 \end_inset
@@ -830,7 +903,7 @@ transition monads
 \emph on
 Mathematical Operational Semantics
 \emph default
- (Turi-Plotkin '97)
+ [Turi-Plotkin '97]
 \end_layout
 
 \begin_deeper
@@ -840,7 +913,9 @@ status open
 
 \begin_layout Plain Layout
 
-[$-$]
+[$
+\backslash
+textcolor{green}{+}$]
 \end_layout
 
 \end_inset
@@ -856,9 +931,7 @@ status open
 
 [$
 \backslash
-textcolor{red}{
-\backslash
-times}$]
+textcolor{red}{-}$]
 \end_layout
 
 \end_inset
@@ -867,7 +940,7 @@ Higher-order languages (such as
 \begin_inset Formula $\lambda$
 \end_inset
 
--calculus) only starting to be investigated (Peressoti '17)
+-calculus) only starting to be investigated [Peressotti '17]
 \end_layout
 
 \end_deeper
@@ -877,19 +950,8 @@ Rewriting with variable binding (categorical approach)
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[$-$]
-\end_layout
-
-\end_inset
-
 e.g.
- Hamana 2003, T.
- Hirschowitz 2013, Ahrens 2016
+ [Hamana '03, Hirschowitz '13, Ahrens '16]
 \end_layout
 
 \begin_layout Itemize
@@ -900,9 +962,7 @@ status open
 
 [$
 \backslash
-textcolor{red}{
-\backslash
-times}$]
+textcolor{red}{-}$]
 \end_layout
 
 \end_inset
@@ -980,28 +1040,7 @@ computational
 \begin_inset Formula $\lambda$
 \end_inset
 
--calculus
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnote{
-\begin_inset Quotes eld
-\end_inset
-
-Effectful Applicative Bisimilarity: Monads, Relators, and Howe's Method
-\begin_inset Quotes erd
-\end_inset
-
-, Lago-Gavazzo-Levy LICS 2017}
-\end_layout
-
-\end_inset
-
-
+-calculus (variant of [Dal Lago-Gavazzo-Levy '17])
 \end_layout
 
 \begin_layout Itemize
@@ -1021,7 +1060,7 @@ GSOS specs
 status open
 
 \begin_layout Plain Layout
-Perspectives and interests
+What is still missing
 \end_layout
 
 \end_inset
@@ -1035,8 +1074,7 @@ Perspectives and interests
 status open
 
 \begin_layout Plain Layout
-Abstracting well-known methods, e.g.
- Howe's method
+Metatheorems, e.g., congruence of bisimilarity 
 \end_layout
 
 \end_inset
@@ -1046,28 +1084,16 @@ Abstracting well-known methods, e.g.
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-A cellular Howe's theorem
-\begin_inset Quotes erd
-\end_inset
-
-, LICS'20 with T.
- Hirschowitz and P.
- Borthelle, in a different setting.
+[Borthelle-Hirschowitz-
+\bar under
+Lafont
+\bar default
+ '20], Howe's method in a different setting.
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes eld
-\end_inset
-
-Effectful Applicative Bisimilarity: Monads, Relators, and Howe's Method
-\begin_inset Quotes erd
-\end_inset
-
-, Lago-Gavazzo-Levy LICS 2017, for particular cases of transition monads
- (computational 
+[Dal Lago-Gavazzo-Levy '17], Howe's method for particular cases of transition
+ monads (computational 
 \begin_inset Formula $\lambda$
 \end_inset
 
@@ -1075,7 +1101,7 @@ Effectful Applicative Bisimilarity: Monads, Relators, and Howe's Method
 \end_layout
 
 \begin_layout Itemize
-can we generalize both approaches?
+Can we generalize both approaches?
 \end_layout
 
 \end_deeper
@@ -1107,11 +1133,11 @@ Compilations (as morphisms of transition monads)
 
 \begin_deeper
 \begin_layout Itemize
-explore different variants (different correctness criteria).
+Explore different variants (different correctness criteria).
 \end_layout
 
 \begin_layout Itemize
-try 
+Try 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1130,11 +1156,11 @@ academic
 \begin_inset Quotes eld
 \end_inset
 
-effective
+Effective
 \begin_inset Quotes erd
 \end_inset
 
- Coq formalization (theory already formalized using UniMath for the syntax)
+ Coq formalization (theory already formalized using UniMath for the syntax).
 \end_layout
 
 \end_deeper
@@ -2389,7 +2415,7 @@ pour réduire la marge
 \end_layout
 
 \begin_layout Standard
-terms as syntactic derivation trees (free variables as distinguished leaves).
+terms as syntax trees (free variables as distinguished leaves).
 \end_layout
 
 \end_deeper
@@ -3933,6 +3959,24 @@ pour réduire la marge
 
 \end_layout
 
+\end_deeper
+\begin_layout Columns
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Block
 \begin_inset Argument 2
 status open
@@ -4297,12 +4341,25 @@ end{align*}
 \end_layout
 
 \begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
 Commutation with substitution 
 \begin_inset Formula $\Leftrightarrow$
 \end_inset
 
  Module morphisms 
-\begin_inset Formula $\sigma,\tau:R\rightarrow L$
+\begin_inset Formula $\xymatrix{R\ar@<-.5ex>[r]_{target}\ar@<+.5ex>[r]^{source} & L}
+$
 \end_inset
 
 .
@@ -4358,7 +4415,7 @@ status open
 \end_inset
 
  
-\begin_inset Formula $\xymatrix{R\ar@<+.5ex>[r]^{\sigma}\ar@<-0.5ex>[r]_{\tau} & T}
+\begin_inset Formula $\xymatrix{R\ar@<+.5ex>[r]^{source}\ar@<-0.5ex>[r]_{target} & T}
 $
 \end_inset
 
@@ -4385,7 +4442,7 @@ $
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\sigma,\tau:R\rightarrow T$
+\begin_inset Formula $source,target:R\rightarrow T$
 \end_inset
 
  are 
@@ -4818,9 +4875,9 @@ status open
 
 
 \backslash
-footnote{POPL'20 with B.Ahrens, A.
- Hirschowitz, M.
- Maggesi.}
+footnote{[Ahrens-Hirschowitz-
+\backslash
+underline{Lafont}-Maggesi '20]}
 \end_layout
 
 \end_inset
@@ -5663,8 +5720,24 @@ initial semantics
 
 \begin_deeper
 \begin_layout Itemize
-Notion of signature (e.g, for the syntax, a list of operation symbols with
- associated arities)
+Notion of signature 
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Example (syntax)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+A list of operation symbols with associated arities
 \end_layout
 
 \begin_deeper
@@ -5750,8 +5823,17 @@ a notion of model
 \end_layout
 
 \begin_layout Example
-transition monad + additional structure, i.e., interpretation of operations
- and reductions
+a 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+monad
+\end_layout
+
+\end_inset
+
+ equipped with the operations of the signature
 \end_layout
 
 \begin_layout Itemize
@@ -5759,7 +5841,17 @@ a notion of morphism of models
 \end_layout
 
 \begin_layout Example
-compilation preserving additionnal structure
+a 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+monad morphism
+\end_layout
+
+\end_inset
+
+ preserving operations
 \end_layout
 
 \begin_layout Itemize
@@ -7612,16 +7704,12 @@ Second-order equational logic
 \begin_inset Quotes erd
 \end_inset
 
- Fiore-Hur '10, 
-\begin_inset Quotes eld
-\end_inset
-
-Modular specification of monads
-\begin_inset Quotes erd
-\end_inset
-
- Ahrens et al.
- '19
+, Fiore-Hur '10, [Ahrens-Hirschowitz-
+\bar under
+Lafont
+\bar default
+-Maggesi.
+ '19]
 \end_layout
 
 \end_deeper
@@ -10522,8 +10610,15 @@ status open
 
 
 \backslash
-footnotetext{A Theory of Explicit Substitutions with Safe and Full Composition,
- [Kesner 2009]}
+footnotetext{
+\begin_inset Quotes eld
+\end_inset
+
+A Theory of Explicit Substitutions with Safe and Full Composition
+\begin_inset Quotes erd
+\end_inset
+
+, Kesner '09}
 \end_layout
 
 \end_inset
@@ -10686,7 +10781,7 @@ define
 
 \begin_inset Formula 
 \[
-\underbrace{Y(\lambda x.t)}_{\fix(t)}\rightarrow_{\beta}^{*}(\lambda x.t)(Y(\lambda x.t))\rightarrow_{\beta}\underbrace{t[x\mapsto Y(\lambda x.t)]}_{t[x\mapsto\fix(t)]}
+\underbrace{Y(\lambda x.t)}_{\fix(t)}\rightarrow_{\beta}^{*}(\lambda x.t)(Y(\lambda x.t))\rightarrow_{\beta}\underbrace{t[x:=Y(\lambda x.t)]}_{t[x:=\fix(t)]}
 \]
 
 \end_inset
@@ -11007,11 +11102,11 @@ Perspectives
 
 \begin_deeper
 \begin_layout Itemize
-replay well-known methods (e.g., Howe's method) in this setting
+develop the metatheory (e.g., congruence of bisimilarity)
 \end_layout
 
 \begin_layout Itemize
-explore different notion of compilations in this setting
+explore different notions of compilations in this setting
 \end_layout
 
 \end_deeper
@@ -11480,7 +11575,7 @@ status open
 footnotetext{
 \backslash
 textit{Effectful Applicative Bisimilarity: Monads, Relators, and Howe's
- Method}, Lago-Gavazzo-Levy LICS 2017}
+ Method}, Dal Lago-Gavazzo-Levy LICS 2017}
 \end_layout
 
 \end_inset
