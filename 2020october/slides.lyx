@@ -1006,6 +1006,14 @@ Examples of transition monads
 
 \begin_deeper
 \begin_layout Itemize
+cbv/cbn 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus (big/small-step)
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Formula $\overline{\lambda}\mu$
 \end_inset
 
@@ -1028,14 +1036,6 @@ differential
 \end_layout
 
 \begin_layout Itemize
-cbv 
-\begin_inset Formula $\lambda$
-\end_inset
-
--calculus (big/small-step)
-\end_layout
-
-\begin_layout Itemize
 computational 
 \begin_inset Formula $\lambda$
 \end_inset
@@ -1044,7 +1044,7 @@ computational
 \end_layout
 
 \begin_layout Itemize
-GSOS specs
+GSOS systems
 \end_layout
 
 \end_deeper
@@ -1196,6 +1196,13 @@ Limitations
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\pi$
+\end_inset
+
+-calculus as a labelled transition system?
+\end_layout
+
 \begin_layout Itemize
 signature for the computational 
 \begin_inset Formula $\lambda$
@@ -4525,18 +4532,24 @@ $
 
 \end_deeper
 \begin_layout Frame
-What about big-step cbv 
+What about cbv 
 \begin_inset Formula $\lambda$
 \end_inset
 
 -calculus? 
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Plain Layout
 Terms reduce to values, not terms!
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 Reductions are stable under substitution with values, not with terms!
 \end_layout
@@ -7743,7 +7756,7 @@ operation
 \emph on
 module morphism
 \emph default
-: compatible with substitution:
+, i.e., compatible with substitution:
 \begin_inset Formula 
 \[
 (t_{1}\,t_{2})[y\mapsto u_{y}]=t_{1}[y\mapsto u_{y}]\,t_{2}[y\mapsto u_{y}]
@@ -8841,11 +8854,15 @@ Transition monad
 \begin_inset Text
 
 \begin_layout Plain Layout
-cbv 
+big-step cbv 
 \begin_inset Formula $\lambda$
 \end_inset
 
--calculus
+-calculus 
+\begin_inset Formula $\ $
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -11135,6 +11152,10 @@ PLs as transition monads
 \end_layout
 
 \begin_layout Itemize
+Compilation as transition monad morphisms 
+\end_layout
+
+\begin_layout Itemize
 Signatures for transition monads
 \end_layout
 
@@ -11166,6 +11187,18 @@ Develop the metatheory (e.g., congruence of bisimilarity)
 
 \begin_layout Itemize
 Extensions to linear types, subtyping, polymorphism, ...
+\end_layout
+
+\begin_layout Itemize
+π-calculus as a transition system?
+\end_layout
+
+\begin_layout Itemize
+signature for computational 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus?
 \end_layout
 
 \end_deeper
