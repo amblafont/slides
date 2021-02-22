@@ -582,8 +582,12 @@ That is the question
 \end_layout
 
 \begin_deeper
-\begin_layout Block
+\begin_layout Itemize
 What is a programming language, mathematically?
+\end_layout
+
+\begin_layout Itemize
+How do we specify them?
 \end_layout
 
 \begin_layout ExampleBlock
@@ -1196,11 +1200,21 @@ Limitations
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Is 
 \begin_inset Formula $\pi$
 \end_inset
 
--calculus as a labelled transition system?
+-calculus (as a labelled transition system) a transition monad?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -7951,6 +7965,56 @@ t & \mapsto\lambda x.t
 
 \end_layout
 
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Fun facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Formula 
+\[
+M'\cong M^{L}\text{\text{ in the category of \ensuremath{L}-modules}}
+\]
+
+\end_inset
+
+For 
+\begin_inset Formula $L=$
+\end_inset
+
+ monad of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calculus modulo 
+\begin_inset Formula $\beta$
+\end_inset
+
+- and 
+\begin_inset Formula $\eta$
+\end_inset
+
+-equation,
+\begin_inset Formula 
+\[
+L^{L}\cong L\text{\text{ in the category of \ensuremath{L}-modules}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -8044,7 +8108,7 @@ Easy interpretation of transition rules:
 <lyxtabular version="3" rows="4" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
-<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -8055,7 +8119,7 @@ Components of the rule
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8118,7 +8182,7 @@ metavariables
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -8224,17 +8288,28 @@ premise
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\begin{aligned}V\rightarrow & \,M_{1}\times M_{2}\\
-({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}}{\normalcolor ,}{\color{blue}u})\mapsto & \,({\color{green}t_{1}},{\color{red}t_{2}})
-\end{aligned}
-\text{\quad}$
+\begin_inset Formula $\arraycolsep=1.4pt\begin{array}{ccccc}
+M_{1} & \leftarrow & V & \rightarrow & M_{2}\\
+t_{1} & \mapsfrom & ({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}}{\normalcolor ,}{\color{blue}u}) & \mapsto & t_{2}
+\end{array}$
 \end_inset
 
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{aligned}M_{1}\leftarrow & V & \rightarrow M_{2}\\
+t_{1}\mapsfrom & ({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}}{\normalcolor ,}{\color{blue}u}) & \mapsto{\color{red}t_{2}}
+\end{aligned}
+$
+\end_inset
+
+
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="1">
 <features tabularvalignment="middle">
@@ -8266,6 +8341,11 @@ morphism)
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -8325,14 +8405,30 @@ conclusion
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\arraycolsep=1.4pt\begin{array}{ccccc}
+M_{1} & \leftarrow & V & \rightarrow & M_{2}\\
+app(t_{1},u) & \mapsfrom & ({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}}{\normalcolor ,}{\color{blue}u}) & \mapsto & app(t_{2},u)
+\end{array}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $\begin{aligned}V\rightarrow & \,M_{1}\times M_{2}\\
 ({\color{blue}t_{1}},{\color{blue}t_{2}},{\color{blue}u})\mapsto & \,(\:{\color{green}app(t_{1},u)},{\color{red}\;app(t_{2},u)}\:)
 \end{aligned}
 $
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -8614,6 +8710,17 @@ premise
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\arraycolsep=1.4pt\begin{array}{ccccc}
+M_{1}' & \leftarrow & V & \rightarrow & M_{2}'\\
+t_{1} & \mapsfrom & ({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}}) & \mapsto & t_{2}
+\end{array}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\begin{aligned}V\rightarrow & \,T'\times T'\\
 ({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}})\mapsto & \,({\color{green}t_{1}},{\color{red}t_{2}})
 \end{aligned}
@@ -8652,6 +8759,11 @@ morphism)
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -8715,10 +8827,26 @@ conclusion
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\arraycolsep=1.4pt\begin{array}{ccccc}
+M_{1} & \leftarrow & V & \rightarrow & M_{2}\\
+\lambda x.t_{1} & \mapsfrom & ({\color{blue}t_{1}}{\normalcolor ,}{\color{blue}t_{2}}) & \mapsto & \lambda x.t_{2}
+\end{array}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\begin{aligned}V\rightarrow & \,T\times T\\
 ({\color{blue}t_{1}},{\color{blue}t_{2}})\mapsto & \,(\:{\color{green}\lambda x.t_{1}},{\color{red}\;\lambda x.t_{2}}\:)
 \end{aligned}
 $
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -11047,7 +11175,7 @@ Model structure on
 
 \begin_deeper
 \begin_layout Itemize
-use the real susbtitution 
+use the real substitution 
 \begin_inset Formula $T'\times T\xrightarrow{(t,u)\mapsto t[x:=u]}T$
 \end_inset
 
@@ -11190,15 +11318,15 @@ Extensions to linear types, subtyping, polymorphism, ...
 \end_layout
 
 \begin_layout Itemize
-π-calculus as a transition system?
-\end_layout
-
-\begin_layout Itemize
-signature for computational 
+Signature for computational 
 \begin_inset Formula $\lambda$
 \end_inset
 
 -calculus?
+\end_layout
+
+\begin_layout Itemize
+Strengthen the recursion principle (i.e., enlarge the category of models)
 \end_layout
 
 \end_deeper
@@ -11317,11 +11445,23 @@ status open
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Note Note
-status open
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
 
 \begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Future work: strengthen the recursion principle
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -11331,7 +11471,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-Articles
+Initial semantics (general framework)
 \end_layout
 
 \end_inset
@@ -11341,21 +11481,1258 @@ Articles
 
 \begin_deeper
 \begin_layout Itemize
-AHLM CSL 2018 about 
+specified object by a signature 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ = 
 \emph on
-quotients of algebraic 1-signatures
+initial object
 \emph default
+ in the category of 
+\emph on
+models
+\emph default
+ of 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+initiality
+\emph default
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ recursion principle
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tikzset{every picture/.style={line width=0.75pt}} %set default line width
+ to 0.75pt        
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+\end_layout
+
+\begin_layout Plain Layout
+
+%uncomment if require: 
+\backslash
+path (0,235); %set diagram left start at 0, and has height of 235
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%Straight Lines [id:da2204746523268304] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw    (49.45,103) -- (390.58,103) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw [shift={(392.58,103)}, rotate = 180] [color={rgb, 255:red, 0; green,
+ 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) ..
+ controls (6.95,-1.4) and (3.31,-0.3) ..
+ (0,0) ..
+ controls (3.31,0.3) and (6.95,1.4) ..
+ (10.93,3.29)   ;
+\end_layout
+
+\begin_layout Plain Layout
+
+%Straight Lines [id:da31259690275031904] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw    (249.58,98.2) -- (249.58,109.2) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+%Straight Lines [id:da841667218263362] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw    (157.58,98.2) -- (157.58,109.2) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Text Node
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (0,84) node [anchor=north west][inner sep=0.75pt]   [align=left] {
+\backslash
+mbox{-} general models};
+\end_layout
+
+\begin_layout Plain Layout
+
+% Text Node
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (326,83) node [anchor=north west][inner sep=0.75pt]   [align=left] {+
+ general models};
+\end_layout
+
+\begin_layout Plain Layout
+
+% Text Node
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (6,105) node [anchor=north west][inner sep=0.75pt]   [align=left] {easier
+ signatures};
+\end_layout
+
+\begin_layout Plain Layout
+
+% Text Node
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (325,106) node [anchor=north west][inner sep=0.75pt]   [align=left]
+ {
+\backslash
+begin{minipage}[lt]{84.97756000000001pt}
+\backslash
+setlength
+\backslash
+topsep{0pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+stronger recursion
+\backslash
+
+\backslash
+principle
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}};
+\end_layout
+
+\begin_layout Plain Layout
+
+% Text Node
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (120.95,58.38) node [anchor=north west][inner sep=0.75pt]  [rotate=-359.64]
+ [align=left] {
+\backslash
+begin{minipage}[lt]{52.042644pt}
+\backslash
+setlength
+\backslash
+topsep{0pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{transition }
+\backslash
+
+\backslash
+
+\backslash
+textbf{monads}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}};
+\end_layout
+
+\begin_layout Plain Layout
+
+% Text Node
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (218.95,57.38) node [anchor=north west][inner sep=0.75pt]  [rotate=-359.64]
+ [align=left] {
+\backslash
+begin{minipage}[lt]{47.54335600000001pt}
+\backslash
+setlength
+\backslash
+topsep{0pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+ reduction
+\backslash
+
+\backslash
+monads
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}};
+\end_layout
+
+\begin_layout Plain Layout
+
+% Text Node
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (190.95,116.38) node [anchor=north west][inner sep=0.75pt]  [rotate=-359.64]
+ [align=left] {
+\backslash
+begin{minipage}[lt]{85.78200000000001pt}
+\backslash
+setlength
+\backslash
+topsep{0pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+(Ahrens et al.
+ '20) 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}};
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Future
+\begin_inset space ~
+\end_inset
+
+work alternative notion of signatures with more general models (as in Ahrens
+ et al.
+ '20) 
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ stronger recursion principle
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+A difficulty with general models à la Ahrens et al.
+ '20: DLC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula $({\color{blue}T},{\color{green}\,M_{1}}{\color{red}\leftarrow Trans\rightarrow}{\color{green}M_{2}})$
+\end_inset
+
+ specified by a 3-step signature
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+component
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Sigma_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Sigma_{3}$
+\end_inset
+
+ (
+\series bold
+to be generalised
+\series default
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+specifies
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\color{green}M_{1}},{\color{green}M_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+\begin_inset Formula $\leftarrow Trans\rightarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Currently, 
+\begin_inset Formula $\Sigma_{3}$
+\end_inset
+
+ specifies transition rules for 
+\begin_inset Formula $\text{\ensuremath{\begin{aligned}{\color{blue}T} & =\text{'the' initial model of \ensuremath{\Sigma_{1}}}\\
+\text{(in Ahrens et al. '20, }T & =\quad any\quad\quad\,\,\text{model of }\ensuremath{\Sigma_{1}})\\
+({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{'the' initial model of \ensuremath{\Sigma_{2}}}
+\end{aligned}
+}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Future work
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Formula $\Sigma_{3}$
+\end_inset
+
+ specifies transition rules for
+\begin_inset Formula 
+\[
+\ensuremath{\begin{aligned}{\color{blue}T} & =\text{\sout{'the' initial} }\text{\emph{any} model of \ensuremath{\Sigma_{1}} (as in Ahrens et al. '20)}\\
+({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{\sout{'the' initial} }\text{\emph{any} model of \ensuremath{\Sigma_{2}}}
+\end{aligned}
+}
+\]
+
+\end_inset
+
 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-\align center
-"High-Level Signatures and Initial Semantics
-\begin_inset Quotes erd
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+ensuremath{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{aligned}{
+\backslash
+color{blue}T} & =
+\backslash
+text{
+\backslash
+sout{'the' initial} }
+\backslash
+text{
+\backslash
+emph{any} model of 
+\backslash
+ensuremath{
+\backslash
+Sigma_{1}}}
+\backslash
+
+\backslash
+({
+\backslash
+color{green}M_{1}},{
+\backslash
+color{green}M_{2}}) & =
+\backslash
+text{
+\backslash
+sout{'the' initial} }
+\backslash
+text{
+\backslash
+emph{any} model of 
+\backslash
+ensuremath{
+\backslash
+Sigma_{2}}}
+\backslash
+end{aligned}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\ensuremath{\begin{aligned}{\color{blue}T} & =\text{\sout{'the' initial} }\text{\emph{any} model of \ensuremath{\Sigma_{1}}}\\
+({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{\sout{'the' initial} }\text{\emph{any} model of \ensuremath{\Sigma_{2}}}
+\end{aligned}
+}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{+0.5em}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Models
+\series default
+: 
+\begin_inset Formula $({\color{blue}T},{\color{green}\,M_{1}}{\color{red}\leftarrow Trans\rightarrow}{\color{green}M_{2}})$
+\end_inset
+
+ + extra structure, s.t.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\text{\ensuremath{\begin{aligned}{\color{blue}T} & =\text{'the' initial model of \ensuremath{\Sigma_{1}}}\\
+\text{(in Ahrens et al. '20, }T & =\quad any\quad\quad\,\,\text{model of }\ensuremath{\Sigma_{1}})\\
+({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{\sout{'the' initial}'the' initial model of \ensuremath{\Sigma_{2}}}
+\end{aligned}
+}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Models of 
+\begin_inset Formula $(\Sigma_{1},\Sigma_{2},\Sigma_{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+transition monads 
+\begin_inset Formula $({\color{blue}T},{\color{green}\,M_{1}}{\color{red}\leftarrow Trans\rightarrow}{\color{green}M_{2}})$
+\end_inset
+
+ + extra structure, s.t.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{\ensuremath{\begin{aligned}{\color{blue}T} & =\text{'the' initial model of \ensuremath{\Sigma_{1}}}\\
+\text{(in Ahrens et al. '20, }T & =\quad any\quad\quad\,\,\text{model of }\ensuremath{\Sigma_{1}})\\
+({\color{green}M_{1}},{\color{green}M_{2}}) & =\text{'the' initial model of \ensuremath{\Sigma_{2}}}
+\end{aligned}
+}}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left(\begin{array}{c}
+T=\text{ \emph{any} model of \ensuremath{\Sigma_{1}}}\\
+\text{in Ahrens et al. '20}
+\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Specifying the transition rules of DLC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+transitions involve intermediary syntactic constructions
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T=$
+\end_inset
+
+ 'the' 
+\series bold
+initial
+\series default
+ model of 
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T=$
+\end_inset
+
+ any model of 
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+define them by 
+\series bold
+recursion
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+recursion not available!
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Description
+\begin_inset Note Note
+status open
+
+\begin_layout Description
+Models
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $(\Sigma_{1},\Sigma_{2},\Sigma_{3})$
+\end_inset
+
+ transition monads 
+\begin_inset Formula $({\color{blue}T},{\color{green}\,M_{1}}{\color{red}\leftarrow Trans\rightarrow}{\color{green}M_{2}})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+s.t.
+ 
+\color blue
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\color inherit
+, 
+\color green
+
+\begin_inset Formula $M_{1}$
+\end_inset
+
+
+\color inherit
+ and 
+\color blue
+
+\begin_inset Formula ${\color{green}M_{2}}$
+\end_inset
+
+
+\color inherit
+ are fixed = specified by 
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Models of 
+\begin_inset Formula $(\Sigma_{1},\Sigma_{2},\Sigma_{3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset Formula $({\color{blue}T},{\color{green}\,M_{1}}{\color{red}\leftarrow Trans\rightarrow}{\color{green}M_{2}})$
+\end_inset
+
+ s.t.
+ 
+\color blue
+
+\begin_inset Formula $T$
+\end_inset
+
+
+\color inherit
+, 
+\color green
+
+\begin_inset Formula $M_{1}$
+\end_inset
+
+
+\color inherit
+ and 
+\color blue
+
+\begin_inset Formula ${\color{green}M_{2}}$
+\end_inset
+
+
+\color inherit
+ are fixed = specified by 
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzcd}[ampersand replacement=
+\backslash
+&]
+\end_layout
+
+\begin_layout Plain Layout
+
+S_1 
+\backslash
+circ T 
+\backslash
+& 
+\end_layout
+
+\begin_layout Plain Layout
+
+       Trans 
+\backslash
+arrow[l, "
+\backslash
+mathclap{source}"'] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+arrow[r, "
+\backslash
+mathclap{target}", sloped] 
+\backslash
+&        
+\end_layout
+
+\begin_layout Plain Layout
+
+S_2 
+\backslash
+circ T
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ be a transition monad specified by a signature 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+:
 \end_layout
 
 \end_inset
@@ -11364,18 +12741,110 @@ status open
 \end_layout
 
 \begin_layout Itemize
-AHLM FSCD 2019 about 
-\emph on
-algebraic 2-signatures
-\emph default
+Models (of this signature) = 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(in particular) transition monads
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $({\color{blue}T},{\color{green}\,M_{1}}{\color{red}\leftarrow Trans\rightarrow}{\color{green}M_{2}})$
+\end_inset
+
 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-\align center
-"Modular Specification of Monads Through Higher-Order Presentations
-\begin_inset Quotes erd
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzcd}[ampersand replacement=
+\backslash
+&]
+\end_layout
+
+\begin_layout Plain Layout
+
+S_1 
+\backslash
+circ T 
+\backslash
+& 
+\end_layout
+
+\begin_layout Plain Layout
+
+       Trans 
+\backslash
+arrow[l, "
+\backslash
+mathclap{source}"'] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+arrow[r, "
+\backslash
+mathclap{target}", sloped] 
+\backslash
+&        
+\end_layout
+
+\begin_layout Plain Layout
+
+S_2 
+\backslash
+circ T
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -11386,67 +12855,509 @@ status open
 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-AHLM POPL 2020 about 
+
+\color blue
+\begin_inset Formula $T$
+\end_inset
+
+
+\color inherit
+, 
+\color green
+
+\begin_inset Formula $M_{1}$
+\end_inset
+
+
+\color inherit
+ and 
+\color blue
+
+\begin_inset Formula ${\color{green}M_{2}}$
+\end_inset
+
+
+\color inherit
+ are fixed = specified by 
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+in Ahrens et al.
+ 
 \emph on
 reduction monads
 \emph default
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\align center
-"Reduction monads and their signatures
-\begin_inset Quotes erd
+ '20, 
+\begin_inset Formula ${\color{blue}T}=$
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-HHL (on HAL): extension to bipartite graphs and simply typed PLs
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\align center
-"Modules over monads and operational semantics
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Plain Layout
-AHLM = Ahrens, A.
- Hirschowitz, 
+ 
+\strikeout on
+'the' initial model
+\strikeout default
+ 
 \emph on
-Lafont
+any 
 \emph default
-, Maggesi
-\end_layout
+model of 
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
 
-\begin_layout Plain Layout
-HHL = A.
- Hirschowitz, T.
- Hirschowitz, 
-\emph on
-Lafont
+
 \end_layout
 
 \end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.2em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula ${\color{blue}T}=$
+\end_inset
+
+ 
+\strikeout on
+'the' initial model
+\strikeout default
+ 
+\emph on
+any 
+\emph default
+model of 
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fscd2020/Attention.png
+	height 1.4em
+	BoundingBox 0bp 100bp 600bp 500bp
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Formula $T$
+\end_inset
+
+
+\color inherit
+, 
+\color green
+
+\begin_inset Formula $M_{1}$
+\end_inset
+
+
+\color inherit
+ and 
+\color blue
+
+\begin_inset Formula ${\color{green}M_{2}}$
+\end_inset
+
+
+\color inherit
+ are fixed = specified by 
+\begin_inset Formula $\Sigma_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma_{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Future work: Generalises the notion of model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Different 
+\begin_inset Formula $T$
+\end_inset
+
+, 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+ in models (following models for reduction monads of Ahrens et al.
+ POPL 2020)
+\end_layout
+
+\begin_layout Block
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ stronger recursion principle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+model of 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ = (in particular) a transition monad 
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+[
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzcd}[ampersand replacement=
+\backslash
+&, column sep=tiny]
+\end_layout
+
+\begin_layout Plain Layout
+
+      
+\backslash
+& Trans 
+\backslash
+arrow[ld, "
+\backslash
+mathclap{source}"', sloped] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+arrow[rd, "
+\backslash
+mathclap{target}", sloped] 
+\backslash
+&        
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+S_1 
+\backslash
+circ T 
+\backslash
+& 
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+& 
+\end_layout
+
+\begin_layout Plain Layout
+
+S_2 
+\backslash
+circ T
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzcd}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+text{such that}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+T' & = T
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+S_1' & = S_1
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+S_2' & = S_2
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{aligned}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+such equalities are not required for models of reduction monads of Ahrens
+ et al.
+ (POPL 2020)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Future work: allow 
+\begin_inset Formula $T$
+\end_inset
+
+, 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $S_{2}$
+\end_inset
+
+ to vary in the notion of models (following reduction monads of Ahrens et
+ al.
+ POPL 2020)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Signature
+\begin_inset space ~
+\end_inset
+
+for
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $T$
+\end_inset
+
+: 2 operations (application/abstraction)
+\end_layout
+
 \end_inset
 
 
