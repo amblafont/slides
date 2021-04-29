@@ -1093,19 +1093,24 @@ Metatheorems, e.g., congruence of bisimilarity
 Lafont
 \bar default
  '20], Howe's method in a different setting.
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Itemize
-[Dal Lago-Gavazzo-Levy '17], Howe's method for particular cases of transition
- monads (computational 
+\begin_layout Plain Layout
+[Dal Lago-Gavazzo-Levy '17], Howe's method for computational 
 \begin_inset Formula $\lambda$
 \end_inset
 
--calculus).
+-calculus.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-Can we generalize both approaches?
+Can we adapt it to transition monads?
 \end_layout
 
 \end_deeper
@@ -1235,11 +1240,31 @@ linear types?
 \end_layout
 
 \begin_layout Itemize
-polymorphic/dependent types?
+subtyping?
 \end_layout
 
 \begin_layout Itemize
-subtyping?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+Rightarrow$]
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+-calcul quantique?
+\end_layout
+
+\begin_layout Itemize
+polymorphic/dependent types?
 \end_layout
 
 \end_deeper
