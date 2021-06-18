@@ -1,0 +1,3818 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usetheme{Warsaw}
+\usepackage{svg}
+% or ...
+% \usepackage{enumitem}
+\usepackage{tikz-cd}
+\usepackage{amsmath,mathtools}
+\usepackage{newtxmath}
+\usepackage{totcount}
+
+%\usepackage[perpage]{footmisc}
+\usepackage{perpage} \MakePerPage{footnote}
+
+\usepackage[all]{xy}
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+\usepackage{etoolbox}
+\setbeamertemplate{headline}{%
+\leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+    \end{beamercolorbox}%
+  }
+}
+%\addtobeamertemplate{navigation symbols}{}{%
+%    \usebeamerfont{footline}%
+%    \usebeamercolor[fg]{footline}%
+%    \hspace{1em}%
+%\vspace{1em}
+%    \insertframenumber/\inserttotalframenumber
+%}
+
+\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\usetikzlibrary{decorations.pathreplacing,tikzmark,calc}
+
+\tikzstyle{triangle}=[fill=blue!20, regular polygon, regular polygon sides=3, draw=black!40]
+%\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node[baseline] (#1) {};}
+
+\tikzset{My Node Style/.style={midway, right, xshift=3.0ex, 
+%align=left,
+%anchor=west, 
+%anchor=north west,
+font=\small, draw=none, 
+% align=left,
+anchor=base west,
+ thin, text=black}}
+
+\newcommand\VerticalBrace[4][]{%
+    % #1 = draw options
+    % #2 = top mark
+    % #2 = bottom mark
+    % #4 = label
+\begin{tikzpicture}[overlay,remember picture]
+\path let \p1=(pic cs:#2),\p2=(pic cs:#3) in coordinate (Q1) at ({max(\x1,\x2)+.5em},\y1);
+  \draw[decorate,decoration={brace, amplitude=1.5ex}, #1] 
+%    ([yshift=1ex]:#2.north east)  --  (#3.south east-|#2.north east)
+    ([yshift=1ex]{{pic cs:#2}-|Q1})  --  ({pic cs:#3} -| Q1)
+        node[My Node Style
+%, baseline=brace.east
+] {#4};
+\end{tikzpicture}
+}
+\newcommand{\xyR}[1]{%
+\xydef@\xymatrixrowsep@{#1}
+} % end of \xyR
+
+%\setbeamertemplate{navigation symbols}{%
+%    \usebeamerfont{footline}%
+%    \usebeamercolor[fg]{footline}%
+%    \hspace{1em}%
+%    \insertframenumber/\inserttotalframenumber
+%}
+
+\definecolor{green}{RGB}{0,100,0}
+\definecolor{mygreen}{RGB}{126,211,33}
+
+\setbeamercolor{alerted text}{fg=blue}
+
+\newcounter{exemples}
+\regtotcounter{exemples}
+\newcommand\newexemple{\stepcounter{exemples}
+\theexemples/\total{exemples}}
+
+% backup slides
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+
+\newcommand\Wider[2][1em]{%
+\makebox[\linewidth][c]{%
+  \begin{minipage}{\dimexpr\textwidth+#1\relax}
+  \raggedright#2
+  \end{minipage}%
+  }%
+}
+
+\newenvironment{mydescription}[1]
+  {\begin{list}{}%
+   {\renewcommand\makelabel[1]{##1:\hfill}%
+   \settowidth\labelwidth{\makelabel{#1}}%
+   \setlength\leftmargin{\labelwidth}
+   \addtolength\leftmargin{\labelsep}}}
+  {\end{list}}
+\usepackage{csquotes}
+\MakeOuterQuote{"}
+
+\usepackage[export]{adjustbox}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: trouver truc à dire sur pourquoi j'ai pas formalisé popl (sinon virer
+ les macarons coq): peut etre dire que je voudrais d'abord formaliser la
+ notion générale de signature?
+\end_layout
+
+\begin_layout Plain Layout
+et tt dépendant: parler de omega groupodies d'abord on part de la théorie
+ de stypes des sensembles globualires, et on l'enrichit
+\end_layout
+
+\begin_layout Plain Layout
+et initiality project
+\end_layout
+
+\begin_layout Plain Layout
+syntaxe nominale: on ne peut pas spécifier l'équation beta, ni la beta réduction
+ car le modèle doit venir avec une substitution!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+In principle, this file can be redistributed and/or modified under the terms
+ of the GNU Public License, version 2.
+ However, this file is supposed to be a template to be modified for your
+ own needs.
+ For this reason, if you use this file as a template and not specifically
+ distribute it as part of a another package/program, the author grants the
+ extra permission to freely copy and modify this file as you see fit and
+ even to delete this copyright notice.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Plan}   
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,currentsubsection,
+\end_layout
+
+\begin_layout Plain Layout
+
+subsubsectionstyle={show/show/hide/hide}
+\end_layout
+
+\begin_layout Plain Layout
+
+] 
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSection[]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Plan}   
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection,
+\end_layout
+
+\begin_layout Plain Layout
+
+subsubsectionstyle={show/show/hide/hide}] 
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begingroup
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% eliminer le bandeau du plan au debut
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+setbeamertemplate{headline}{}
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\backslash
+addtobeamertemplate{frametitle}{
+\backslash
+vspace*{-0.5
+\backslash
+baselineskip}}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+usebeamerfont{footline}%
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+usebeamercolor[fg]{footline}%
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+hspace{1em}%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+insertframenumber/
+\backslash
+inserttotalframenumber}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}[frame number]{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{navigation symbols}{}
+\end_layout
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+For (finitary) induction-induction, induction is enough
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Audition INRIA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Université de Paris
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+TYPES 2019, Kaposi-Kovács-
+\bar under
+Lafont
+\end_layout
+
+\begin_layout Institute
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+University of New South Wales
+\begin_inset Newline newline
+\end_inset
+
+Sydney, Australia
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+Use the 
+\begin_inset Quotes eld
+\end_inset
+
+Institute mark
+\begin_inset Quotes erd
+\end_inset
+
+ inset (
+\family sans
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+InstituteMark
+\family default
+) only if there are several affiliations.
+\end_layout
+
+\begin_layout Itemize
+Keep it simple, no one is interested in your street address.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+UNSW
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional, but mostly needed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+small 
+\end_layout
+
+\end_inset
+
+Monday talk, June 2021
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Bonjour, je m'appelle Ambroise Lafont, je suis actuellement en postdoctorat
+ en Australie.
+ Dans cet expose je voudrais presenter mon profildans le cadre de ma candidature
+ pour ...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\redr}[3]{#2\xrightarrow{#1}#3}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\monsubst}[1]{[#1]}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\bind}{\mathsf{{bind}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\app}{\mathsf{{app}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\abs}{\mathsf{{abs}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\appcong}{\mathsf{{app\text{-}cong}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\fix}{\mathsf{fix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+robustify{
+\backslash
+redr}
+\backslash
+robustify{
+\backslash
+monsubst}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{Ce groupe développe sel4, le premier noyau de système d'exploitatio
+n vérifié formellement}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivation for Inductive-inductive types
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+repond a un enjeu fondationnel souligne par Chapman
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\series bold
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Inductif-inductif
+\series default
+ =
+\end_layout
+
+\end_inset
+
+
+\series default
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+type 
+\emph on
+inductif 
+\emph default
+généralisé (types dépendants)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+A foundational issue
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\emph on
+Type theory should eat itself
+\emph default
+, Chapman '09
+\end_layout
+
+\begin_layout Standard
+Type theory = 
+\series bold
+foundations 
+\series default
+of mathematics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+Type theory
+\end_layout
+
+\end_inset
+
+ = 
+\series bold
+metatheory
+\series default
+ for type theory ?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+Rightarrow$]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Study type theory in type theory?
+\end_layout
+
+\begin_layout Itemize
+Bootstrap Coq ?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Type theory as an inductive-inductive type [Chapman '09]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Définition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Definition 
+\series bold
+internal
+\series default
+ to type theory
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Principe de récurrence automatique
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+TYPES 2019 with Ambrus Kaposi and András Kovács
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+J'ai personnellement contribue
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Construction of 
+\emph on
+inductive-inductive types
+\emph default
+ 
+\emph on
+with inductive types 
+\emph default
+(Agda)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Examples of inductive types in type theory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Simple inductive types: lists
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned} & \texttt{{\color{purple}Inductive} }arbre:=\\
+ & \quad|\ \smash{\mathrlap{feuille}}\hphantom{noeud}:arbre\\
+ & \quad|\ noeud:arbre\times arbre\rightarrow arbre
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../administratif/dossiers/mcf/arbre.png
+	width 65text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned} & \texttt{{\color{purple}Inductive} }list:=\\
+ & \quad|\ \smash{\mathrlap{nil}}\hphantom{cons}:list\\
+ & \quad|\ cons:\mathbb{N}\times list\rightarrow list
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Formula $=$
+\end_inset
+
+ 
+\begin_inset Formula $cons(1,cons(3,cons(2,nil)))$
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+en appliquant 3 fois le contructeeur d'extension de liste en partant de
+ la liste vide
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+Inductive arbre :=
+\end_layout
+
+\begin_layout Plain Layout
+
+  | Feuille : arbre
+\end_layout
+
+\begin_layout Plain Layout
+
+  | Noeud : arbre -> arbre -> arbre
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Mutual
+\series default
+ inductives types: odd/even size lists
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned} & \texttt{{\color{purple}Inductive} }liste_{paire}:=\\
+ & \quad|\ \smash{\mathrlap{feuille}}\hphantom{noeud}:arbre\\
+ & \quad|\ noeud:forêt\rightarrow arbre
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned}\texttt{{\color{purple}with} } & forêt:=\\
+ & |\ \mathrlap{vide}\hphantom{plus1}:forêt\\
+ & |\ plus1:forêt\times arbre\rightarrow forêt
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned} & \texttt{{\color{purple}Inductive} }list{}_{even}:=\\
+ & \quad|\ \smash{\mathrlap{nil}}\hphantom{econs}:list_{even}\\
+ & \quad|\ econs:\mathbb{N}\times list_{odd}\rightarrow list_{even}
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{-4em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned}\texttt{{\color{purple}with} } & list_{odd}:=\\
+ & |\ ocons:\mathbb{N}\times list_{even}\rightarrow list_{odd}\\
+\\
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Indexed
+\series default
+ inductive types: fixed size lists (dependent types)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\text{\framebox[][]{\ensuremath{vector(n)} = \text{type of lists of size \ensuremath{n}}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned} & \texttt{{\color{purple}Inductive} }vector:\mathbb{N}\rightarrow{\color{purple}\texttt{Type}}:=\\
+ & \quad|\ \smash{\mathrlap{nil}}\hphantom{cons}:vector(0)\\
+ & \quad|\ cons:\mathbb{N}\times vector(n)\rightarrow vector(1+n)
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned} & \texttt{{\color{purple}Inductive} }vecteur:\mathbb{N}\rightarrow{\color{purple}\texttt{Type}}:=\\
+ & \quad|\ \smash{\mathrlap{feuille}}\hphantom{noeud}:arbre\ 0\\
+ & \quad|\ noeud:arbre\ n\times arbre\ m\rightarrow arbre\ (1+max(m,n))
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+arbre\ 5=\texttt{type des arbres de hauteur 5}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Inductive-inductive types
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Inductif-inductive 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 
+\emph on
+generalised
+\emph default
+ mutual indexed inductive
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\texttt{{\color{purple}Inductive} }A:=\dots\texttt{ {\color{purple}with} }B:\underline{A\rightarrow{\color{purple}\texttt{Type}}}:=\dots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+New
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\end_inset
+
+feature
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\end_inset
+
+: the 
+\bar under
+type
+\bar default
+ of B depends on A
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align left
+(not allowed for an indexed mutual inductive)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Exemple : type theory !
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned}\texttt{{\color{purple}Inductive} } & \boldsymbol{context}:=\dots\\
+\texttt{ {\color{purple}with} } & types:\underline{\boldsymbol{context}\rightarrow{\color{purple}\texttt{Type}}}:=\dots
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\size default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\texttt{{\color{purple}Inductive} } & \boldsymbol{context}:=\dots\\
+\texttt{ {\color{purple}with} } & types:\underline{\boldsymbol{context}\rightarrow{\color{purple}\texttt{Type}}}:=\dots
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned}\Gamma & \vdash\\
+\Gamma & \vdash A
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned} & \texttt{{\color{purple}Inductive} }\boldsymbol{contexte}:=\\
+ & \quad|\ vide:contexte\\
+ & \quad|\ \mathrlap{ext}\hphantom{vide}:(\Gamma:contexte)\times(type\ \Gamma)\rightarrow contexte
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{-4em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\begin{array}{c}
+\begin{aligned}\texttt{{\color{purple}with} } & type:\boldsymbol{contexte}\rightarrow{\color{purple}\texttt{Type}}:=\\
+ & \quad|\ \mathbb{N}:\forall\Gamma.type\ \Gamma\\
+ & \quad|\ \dots
+\end{aligned}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Conjecture : 
+\emph on
+Inductive-inductive definitions
+\emph default
+, PhD [Forsberg 2013]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+inductive-inductive > inductive (in
+\emph on
+ extensional
+\emph default
+ type theory)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+TYPES'19 : construction of 
+\series bold
+\emph on
+finitary
+\series default
+\emph default
+ inductive-inductive types
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Conjecture invalidated in the 
+\emph on
+finitary case
+\emph default
+ (finite arities)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Constructing finitary inductive-inductive types
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+\begin_inset Note Note
+status open
+
+\begin_layout Description
+Métathéorie théorie des types extensionnelle
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
++ inductifs mutuels indexés
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+[Kaposi-Kovács 2019]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Definition of a type theory 
+\begin_inset Formula $\mathbb{T}$
+\end_inset
+
+, such that:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+construction of 
+\begin_inset Formula $\mathbb{T}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+smash{
+\end_layout
+
+\end_inset
+
+(with its recurrence principle)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\exists$
+\end_inset
+
+ inductive-inductive 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+smash{
+\end_layout
+
+\end_inset
+
+(finitary case)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Frame
+r
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+[Kaposi-Kovács POPL'19]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+Identification d'une catégorie de modèles (CwFs + 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+dots
+\end_layout
+
+\end_inset
+
+), telle que :
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\exists$
+\end_inset
+
+ modèle initial 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\exists$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf<2>{
+\end_layout
+
+\end_inset
+
+inductifs-inductifs
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ (finitaires)
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Mon expérience de la formalisation de la théorie de Brunerie m'a convaincu
+ que c'était possible.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+My contribution : construction
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotemark{} 
+\end_layout
+
+\end_inset
+
+ of 
+\begin_inset Formula $\mathbb{T}$
+\end_inset
+
+ (Agda, 6000 LoC)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Expérience précédente similaire : types 
+\begin_inset Formula $\subset$
+\end_inset
+
+ 
+\begin_inset Formula $\omega$
+\end_inset
+
+-groupoïdes (Coq)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+En relaite, ils ont montre ca pour les inductifs inductifs quotients, mais
+ leur resultat s'adapte facilement au cas non quoteinte.
+ Fort de mon experience d'une formalisation precedente (que les types sont
+ des omega groupoides) ou j'ai du egalement construire une theorie de stypes,
+ j'ai eu l'intuition qu'il etait possible d'eliminer cette hypothese
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Deux étapes
+\emph on
+ 
+\emph default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+syntaxe non typée,
+\end_layout
+
+\begin_layout Enumerate
+jugements de typage
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Major difficulty
+\series default
+: recurrence principle for 
+\begin_inset Formula $\mathbb{T}$
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(> moitié de la formalisation)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Block
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$
+\backslash
+Rightarrow$
+\end_layout
+
+\end_inset
+
+ [Kaposi-Kovács-
+\bar under
+Lafont
+\bar default
+ TYPES 2019]
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext[1]{
+\backslash
+url{https://github.com/amblafont/UniversalII/tree/cwf-syntax}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recurrence principle 
+\begin_inset Formula $\approx$
+\end_inset
+
+ Initiality
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+J'ai demontre une propriete equivalente : l'initialite
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Example : natural numbers
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtolength
+\backslash
+tabcolsep{-0pt}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Induction
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\forall P\ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\dfrac{P(0)\quad P(n)\Rightarrow P(n+1)}{\forall n.P(n)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+visible<2->{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\forall P\ $
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Graphics
+	filename Attention.png
+	height 2em
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+sur lequel je reviendrais lorsque je detaillerais mon projte de recherche
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\text{\framebox[][]{\forall P}}\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+transport hell
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Recursion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\forall X\ \dfrac{z\in X\qquad s:X\rightarrow X}{\begin{array}{ll}
+{\color{blue}\exists\ f:\ \ \mathbb{N}} & {\color{blue}\mkern-25mu \rightarrow\ X}\\
+\left\{ \begin{array}{l}
+f(0)\\
+f(n+1)
+\end{array}\right. & \mkern-30mu \begin{array}{l}
+=z\\
+=s(f(n))
+\end{array}
+\end{array}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\begin{array}{ll}
+{\color{blue}\exists\ f:\ \ \mathbb{N}} & {\color{blue}\mkern-25mu \rightarrow\ X}\\
+\left\{ \begin{array}{l}
+f(0)\\
+f(n+1)
+\end{array}\right. & \mkern-30mu \begin{array}{l}
+=f_{0}\\
+=\dots f(n)\dots
+\end{array}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+on peut montrer en faisant une induction que il existe un unique
+\end_layout
+
+\begin_layout Plain Layout
+et on peut montrer le contraire par recurrence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Initiality
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Récursion 
+\begin_inset Quotes eld
+\end_inset
+
+
+\color red
+unique
+\color inherit
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\dots{\color{blue}\exists{\color{red}!}f:\mathbb{N}\rightarrow X}\dots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtolength
+\backslash
+tabcolsep{+0pt}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align left
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{3em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\text{\framebox[][]{\text{Initiality }\Leftrightarrow\text{Induction + Recursion}}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The « transport hell »
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Explicit coercions in type theory
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[
+\backslash
+textcolor{green}{$
+\backslash
+checkmark$}]
+\end_layout
+
+\end_inset
+
+ Decidable type-checking
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[
+\backslash
+textcolor{red}{$
+\backslash
+times$}]
+\end_layout
+
+\end_inset
+
+ Proofs jammed by equality witnesses
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+Egalité
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Intensionnelle
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../administratif/dossiers/mcf/Coq_logo.png
+	width 1em
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{-1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Extensionnelle (ZFC)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Coercions implicites
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.2em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\dfrac{e:A=B\qquad t:A}{t:B}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.1em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+\begin_inset Formula $\times$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color green
+\begin_inset Formula $\checkmark$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Décidabilité
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color green
+\begin_inset Formula $\checkmark$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color red
+\begin_inset Formula $\times$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+L'égalité de Coq est intensionnelle, ce qui garantit la décidabilité du
+ typage.
+ En revanche, les mathématiciens travaillant en théorie des ensembles sont
+ plus habitués à une égalité extensionnelle où les coercions sont implicites
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename enfer-transport.jpg
+	width 80text%
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Coercions explicites 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+transport hell
+\begin_inset Quotes erd
+\end_inset
+
+ [Tabareau et al.
+ '18]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Expérience personnelle :
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+
+\emph on
+construction des inductifs-inductifs, ...
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5em}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+A relief : turning equalities into rewrite rules (Agda)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+rev_append: 
+\begin_inset Formula $n'+(1+m)\rightarrow1+n'+m$
+\end_inset
+
+: no coercion needed
+\end_layout
+
+\begin_layout Itemize
+experimental feature exploited in my formalisation
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Intégration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+backupbegin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+Merci pour votre attention.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Construction des inductifs-inductifs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Travaux connexes et perspectives
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Travaux connexes : réduction des inductifs-inductifs aux inductifs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Inductive-inductive definitions
+\emph default
+, [Forsberg 2013]
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Thèse de doctorat
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size small
+\emph on
+Constructing Inductive-Inductive Types in Cubical Type Theory
+\size default
+\emph default
+, [Hugunin 2019], sur un exemple
+\end_layout
+
+\end_deeper
+\begin_layout Block
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Dans les deux cas :
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[
+\backslash
+textcolor{green}{$
+\backslash
+checkmark$}]
+\end_layout
+
+\end_inset
+
+Construction directe, sans introduire 
+\begin_inset Formula $\mathbb{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[
+\backslash
+textcolor{red}{$
+\backslash
+times$}]
+\end_layout
+
+\end_inset
+
+Principe de récurrence partiel
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Perspectives
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Adapter aux inductifs-inductifs infinitaires (W-type, Acc)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+[Kaposi-Kovács LICS'20]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Adapter la construction aux inductifs-inductifs quotients
+\end_layout
+
+\begin_layout Itemize
+Adapter la construction à la théorie des types intensionnelle ?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+backupend
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
