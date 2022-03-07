@@ -1,68 +1,65 @@
 (* Simple inductive types: lists *)
-Inductive list :=
+
+Inductive list_nat :=
   nil
-| cons : nat -> list -> list.
+| cons : nat -> list_nat -> list_nat.
 
-Check (cons 3 (cons 2 nil)).
+Check (cons 2 (cons 3 nil)).
+(* [2, 3] *)
+                         
+(* Mutual inductive types: even/odd lists *)
 
-(* mutual inductive types: even/odd lists *)
-
-Inductive even_list :=
+Inductive oddList :=
+  ocons : nat -> evenList -> oddList
+with evenList :=
   enil
-| econs : nat -> odd_list -> even_list
-with odd_list :=
-  ocons : nat -> even_list -> odd_list.
+| econs : nat -> oddList -> evenList.
 
-Check (ocons 2 enil).
-Check (econs 3 (ocons 2 enil)).
 
 (* indexed inductive types: vectors (fixed-size lists) *)
-
 Inductive vector : nat -> Type :=
   vnil : vector 0
 | vcons : forall n, nat -> vector n -> vector (1 + n).
 
-(* inductive-inductive type : contextes and types *)
-Inductive context : Type :=
-  nilc : context
-| extc : forall (Γ : context), type Γ -> context (* Γ, A *)
-with type : context -> Type :=
-  N : forall Γ, type Γ (* Γ ⊢ ℕ *) .
-    (* with term : forall (Γ : context), type Γ -> Type := .. *)
+Check (vcons _ 2 (vcons _ 3 vnil)).
+
+
+(* inductive-inductive type: contextes and types of a dependent type theory 
+Γ ⊢ and Γ ⊢ A type
+*)
+(*
+Inductive context :=
+  cnil : context
+| cext : forall (Γ : context), types Γ -> context
+                                      (*
+Γ ⊢   Γ ⊢ A
+-----------
+  Γ, A ⊢
+                                      *)
+  with types : context -> Type :=
+    (* Γ ⊢ N type *)
+    N : forall Γ, types Γ.
+
+
+*)
+
 
 (* Transport hell example:
-   rev_append vector1 vector2 = rev vector1 ++ vector2 *)
-Fixpoint rev_append (n : nat) (v1 : vector n) (m : nat) (v2 : vector m) { struct v1 } : vector (n + m).
-  (* refine
-  (
-  match v1 with
-    vnil => v2
-  | vcons n' hd tl => rev_append n' tl (1 + m) (vcons _ hd v2) 
-    end). *)
-  refine
-  (
-  match v1 with
-    vnil => v2
-  | vcons n' hd tl => _ (* rev_append n' tl (1 + m) (vcons _ hd v2) *)
-    end).
-  (* 
-  refine ( rev_append n' tl (1 + m) (vcons _ hd v2) ).
-*)
-  Check ( rev_append n' tl (1 + m) (vcons _ hd v2) ).
-  Require Import Nat.
-  Search Nat.add.
-  Check (eq_rect_r vector ( rev_append n' tl (1 + m) (vcons _ hd v2) )
-      (plus_n_Sm n' m)  ).
-  exact (eq_rect_r vector ( rev_append n' tl (1 + m) (vcons _ hd v2) )
-      (plus_n_Sm n' m)  ).
-  Abort.
 
-Fixpoint rev_append (n : nat) (v1 : vector n) (m : nat) (v2 : vector m) { struct v1 } : vector (n + m) :=
+   rev_append vector1 vector2 = rev vector1 ++ vector2
+   rev_append [1,2] [3,4] = [2,1,3,4]
+
+ *)
+Fixpoint rev_append n1 (v1 : vector n1) n2 (v2 : vector n2)
+         { struct v1 } : vector (n1 + n2).
+
+  refine (
   match v1 with
     vnil => v2
-  | vcons n' hd tl =>
-    eq_rect_r vector ( rev_append n' tl (1 + m) (vcons _ hd v2) )
-      (plus_n_Sm n' m)  
-    end. 
+  | vcons n1' hd tl =>
+    rev_append n1' tl (1 + n2) (vcons n2 hd v2)
+               end).
+
+Check plus_n_Sm.
 
 (* other example : lib.agda in omegatt *)
