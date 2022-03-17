@@ -850,12 +850,38 @@ Theorem provers (e.g., Coq) are
  text-based
 \end_layout
 
-\begin_layout Standard
-\align center
-\begin_inset Formula $\Rightarrow$
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1em}
+\end_layout
+
 \end_inset
 
- need a device to bridge the gap
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[$
+\backslash
+Rightarrow$]
+\end_layout
+
+\end_inset
+
+This talk: a tool to bridge the gap
 \end_layout
 
 \end_deeper
@@ -938,7 +964,7 @@ https://amblafont.github.io/graph-editor/index.html
 
 \end_inset
 
-
+: run by your browser
 \end_layout
 
 \begin_layout Itemize
@@ -1203,7 +1229,6 @@ status open
 
 \begin_layout Plain Layout
 
-\emph on
 
 \backslash
 vspace{-3em}
@@ -1502,7 +1527,7 @@ vspace{1em}
 \series bold
 Note
 \series default
-: YADE exports to Quiver
+: YADE exports to quiver
 \end_layout
 
 \begin_layout Frame
@@ -1789,7 +1814,7 @@ d\ar[r]_{k} & c
 status open
 
 \begin_layout Plain Layout
-From Coq
+Load an equation from Coq
 \end_layout
 
 \end_inset
@@ -1798,7 +1823,7 @@ From Coq
 \end_layout
 
 \begin_layout Block
-Specific notations to comply to the above format
+Specific Coq notations to comply to the above format
 \end_layout
 
 \end_deeper
@@ -3500,7 +3525,7 @@ Forward reasoning in Coq
 
 \begin_deeper
 \begin_layout Enumerate
-Explicitely state the equation
+Explicitly state the equation
 \end_layout
 
 \begin_layout Enumerate
@@ -3571,7 +3596,7 @@ Rightarrow$]
 \end_inset
 
  No need to provide the r.h.s 
-\begin_inset Formula $Gf\cdot n_{x}$
+\begin_inset Formula $Gf\cdot n_{y}$
 \end_inset
 
 
@@ -3979,6 +4004,77 @@ Tighter connection with (js)Coq
 
 \begin_layout Section
 Demo
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Demo: Associativity of the 
+\begin_inset Quotes eld
+\end_inset
+
+composite
+\begin_inset Quotes erd
+\end_inset
+
+ multiplication 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Let
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\delta:ST\rightarrow TS$
+\end_inset
+
+ be a monadic distributive law.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $R:=TS$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mu':RR\rightarrow R$
+\end_inset
+
+ defined in the only sensible way.
+ 
+\end_layout
+
+\begin_layout Standard
+Then,
+\begin_inset Formula 
+\[
+\xymatrix{RRR\ar[r]^{R\mu'}\ar[d]_{\mu'R} & RR\ar[d]^{\mu'}\\
+RR\ar[r]_{\mu'} & R
+}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
 \end_layout
 
 \begin_layout Standard
