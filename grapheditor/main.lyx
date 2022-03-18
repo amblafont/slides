@@ -2274,9 +2274,19 @@ Verbose style
 
 \end_deeper
 \begin_layout Itemize
-Inconsistent! (Type : Type)
+Inconsistent: universe level checks are disabled 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+(
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ impredicative encoding of quotients)
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -3525,15 +3535,23 @@ Forward reasoning in Coq
 
 \begin_deeper
 \begin_layout Enumerate
-Explicitly state the equation
-\end_layout
+State naturality specialised to 
+\begin_inset Formula $f:x\rightarrow y$
+\end_inset
 
-\begin_layout Enumerate
-Prove it by naturality of 
-\begin_inset Formula $n$
+ 
+\begin_inset Formula 
+\[
+n_{x}\cdot Ff=Gf\cdot n_{y}
+\]
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Enumerate
+Prove the above equation by naturality
 \end_layout
 
 \begin_layout Enumerate
@@ -3566,31 +3584,23 @@ Backward reasoning in Coq
 \end_layout
 
 \begin_deeper
-\begin_layout Enumerate
-Focus on 
-\begin_inset Formula $n_{x}\cdotp Ff$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Apply naturality of 
+\begin_layout Standard
+Directly apply naturality of 
 \begin_inset Formula $n$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-[$
+$
 \backslash
-Rightarrow$]
+Rightarrow$
 \end_layout
 
 \end_inset
